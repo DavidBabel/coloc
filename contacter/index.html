@@ -1,0 +1,1416 @@
+<!DOCTYPE html><html lang="fr" data-theme="emerald"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width"><meta name="generator" content="Astro v5.13.2"><link rel="icon" href="data:image/svg+xml,<svg xmlns=&#34;http://www.w3.org/2000/svg&#34; viewBox=&#34;0 0 100 100&#34;><text y=&#34;.9em&#34; font-size=&#34;90&#34;>📞</text></svg>"><title>Contact</title><style>.fr,
+.en,
+.de,
+.es,
+.it {
+  display: none;
+}
+
+html[lang="fr"] .fr {
+  display: inline;
+}
+
+html[lang="en"] .en {
+  display: inline;
+}
+
+html[lang="de"] .de {
+  display: inline;
+}
+
+html[lang="es"] .es {
+  display: inline;
+}
+
+html[lang="it"] .it {
+  display: inline;
+}
+
+.not-fr,
+.not-en,
+.not-de,
+.not-es,
+.not-it {
+  display: flex;
+}
+
+html[lang="fr"] .not-fr {
+  display: none;
+}
+
+html[lang="en"] .not-en {
+  display: none;
+}
+
+html[lang="de"] .not-de {
+  display: none;
+}
+
+html[lang="es"] .not-es {
+  display: none;
+}
+
+html[lang="it"] .not-it {
+  display: none;
+}</style><style>/* insertedcss */
+.menu-item-contact { background-color: var(--color-primary); color: white; border-radius: 8px; box-shadow: 0 2px 4px var(--color-primary-shadow); }
+.menu-item-contacter- { background-color: var(--color-primary); color: white; border-radius: 8px; box-shadow: 0 2px 4px var(--color-primary-shadow); }
+</style><link rel="stylesheet" href="/_astro/_contact_.yjUOZz6v.css">
+<link rel="stylesheet" href="/_astro/_contact_.B2eOwIKF.css">
+<style>.whatsapp-section[data-astro-cid-m5sq7k37]{display:flex;align-items:center;gap:2rem;margin:2rem 20%}.whatsapp-icon[data-astro-cid-m5sq7k37]{flex-shrink:0}.whatsapp-icon[data-astro-cid-m5sq7k37] img[data-astro-cid-m5sq7k37]{width:180px;height:180px}.whatsapp-text[data-astro-cid-m5sq7k37]{flex:1}.whatsapp-text[data-astro-cid-m5sq7k37] p[data-astro-cid-m5sq7k37]{margin:0}.contact-buttons[data-astro-cid-m5sq7k37]{display:flex;flex-direction:column;gap:2rem;margin:2rem 0}.contact-item[data-astro-cid-m5sq7k37]{display:flex;flex-direction:column;align-items:center;gap:1rem}@media (min-width: 768px){.contact-buttons[data-astro-cid-m5sq7k37]{flex-direction:row;justify-content:center;gap:3rem}}@media (max-width: 768px){.whatsapp-section[data-astro-cid-m5sq7k37]{flex-direction:column;text-align:center;gap:1rem;margin:2rem 10%}.whatsapp-icon[data-astro-cid-m5sq7k37] img[data-astro-cid-m5sq7k37]{width:200px;height:200px}}
+</style></head> <body class="m-0 p-0 h-screen w-screen"> <div class="flex h-screen w-screen overflow-hidden"> <label id="hamburger" class="btn btn-circle swap swap-rotate fixed right-4 top-4 z-[9999] lg:hidden shadow-md border border-neutral-300 bg-white/90 backdrop-blur p-2" for="menu-toggle"> <input type="checkbox" id="menu-toggle"> <svg class="swap-off fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"> <path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64Zm0-106.67H448V128H64Z"></path> </svg> <svg class="swap-on fill-current w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"> <polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49"></polygon> </svg> </label> <!-- Overlay désactivé pour permettre le scroll de la page --> <!--
+<div
+  id="overlay"
+  class={`fixed inset-0 z-30 hidden opacity-0 transition-opacity duration-300 lg:hidden`}
+>
+</div>
+--> <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const menuToggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("menu");
+    const keepOpenCheckbox = document.getElementById("keepOpenCheckbox");
+    const menuLinks = menu?.querySelectorAll("a") || [];
+
+    if (!menuToggle || !menu) return;
+
+    // Sync menuToggle initial state with localStorage "keepMenuOpen"
+    const keepOpen = localStorage.getItem("keepMenuOpen") === "true";
+
+    // Appliquer l'état initial
+    applyMenuState(keepOpen);
+
+    // Synchroniser avec la checkbox "garder ouvert" si elle existe
+    if (keepOpenCheckbox) {
+      keepOpenCheckbox.checked = keepOpen;
+
+      // Écouter les changements de la checkbox "garder ouvert"
+      keepOpenCheckbox.addEventListener("change", () => {
+        const newKeepOpen = keepOpenCheckbox.checked;
+        localStorage.setItem("keepMenuOpen", newKeepOpen.toString());
+        applyMenuState(newKeepOpen);
+      });
+    }
+
+    function applyMenuState(keepOpen) {
+      const isLargeScreen = window.innerWidth >= 1024;
+
+      if (keepOpen) {
+        menuToggle.checked = true;
+        menu.classList.remove("translate-x-full");
+        menu.classList.add("translate-x-0");
+        document.body.classList.add("menu-keep-open");
+        // Gérer le blocage de scroll sur mobile
+        if (!isLargeScreen) {
+          document.body.classList.add("menu-open");
+        }
+        // Pas de transition quand keep open est activé
+        menu.classList.remove(
+          "transition-transform",
+          "duration-300",
+          "ease-in-out",
+        );
+      } else {
+        menuToggle.checked = false;
+        menu.classList.add("translate-x-full");
+        menu.classList.remove("translate-x-0");
+        document.body.classList.remove("menu-keep-open");
+        document.body.classList.remove("menu-open");
+        // Ajouter la transition pour l'animation
+        menu.classList.add(
+          "transition-transform",
+          "duration-300",
+          "ease-in-out",
+        );
+      }
+    }
+
+    function toggleMenu() {
+      const open = menuToggle.checked;
+      const isLargeScreen = window.innerWidth >= 1024;
+
+      // Si on ferme le menu (croix cliquée), décocher "garder ouvert"
+      if (!open && keepOpenCheckbox) {
+        keepOpenCheckbox.checked = false;
+        localStorage.setItem("keepMenuOpen", "false");
+        document.body.classList.remove("menu-keep-open");
+        document.body.classList.remove("menu-open");
+        // Réactiver les transitions quand on décoche "garder ouvert"
+        menu.classList.add(
+          "transition-transform",
+          "duration-300",
+          "ease-in-out",
+        );
+      }
+
+      // Si on ouvre le menu et qu'il n'était pas en keepOpen, s'assurer que la transition est active
+      if (open && localStorage.getItem("keepMenuOpen") !== "true") {
+        menu.classList.add(
+          "transition-transform",
+          "duration-300",
+          "ease-in-out",
+        );
+      }
+
+      menu.classList.toggle("translate-x-full", !open);
+      menu.classList.toggle("translate-x-0", open);
+
+      // Gérer le blocage de scroll sur mobile
+      if (!isLargeScreen) {
+        document.body.classList.toggle("menu-open", open);
+      }
+    }
+
+    menuToggle.addEventListener("change", () => {
+      toggleMenu();
+    });
+
+    menuLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        // Ne fermer le menu que si "keep open" n'est pas activé
+        const keepOpen = localStorage.getItem("keepMenuOpen") === "true";
+        if (!keepOpen) {
+          menuToggle.checked = false;
+          toggleMenu();
+        }
+      });
+    });
+
+    // Gérer le redimensionnement de la fenêtre pour le blocage de scroll
+    window.addEventListener("resize", () => {
+      const isLargeScreen = window.innerWidth >= 1024;
+      if (isLargeScreen) {
+        // Sur desktop, toujours permettre le scroll
+        document.body.classList.remove("menu-open");
+      } else {
+        // Sur mobile, vérifier si le menu est ouvert
+        const open = menuToggle.checked;
+        document.body.classList.toggle("menu-open", open);
+      }
+    });
+  });
+</script> <nav id="menu" style="max-height: 100%;" class="
+    backdrop-blur-md bg-base-200/90
+    min-w-66 w-auto fixed top-0 right-0 z-[9998]
+    h-screen shadow-lg
+    lg:pt-4 lg:p-0
+    lg:translate-x-0
+    lg:static
+    lg:z-auto
+    lg:h-auto
+    lg:shadow-none
+    translate-x-full
+    transition-transform duration-300 ease-in-out
+    flex flex-col
+    overscroll-contain
+  " data-astro-cid-52d4wjy7> <div class="p-4 pt-4 lg:pt-0 lg:p-0 flex-shrink-0" data-astro-cid-52d4wjy7> <div class="flex items-center justify-between px-2 mb-6 lg:hidden"> <label class="cursor-pointer label flex items-center" for="keepOpenCheckbox"> <input type="checkbox" id="keepOpenCheckbox" class="checkbox checkbox-primary mr-2"> <span class="label-text"><span class="fr">Garder ouvert</span><span class="en">Keep open</span><span class="de">Offen bleiben</span><span class="es">Estar abierto</span><span class="it">Tieniti aperto</span></span> </label> </div> <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const keepOpenCheckbox = document.getElementById("keepOpenCheckbox");
+    const menuToggle = document.getElementById("menu-toggle");
+    const menu = document.getElementById("menu");
+
+    if (keepOpenCheckbox) {
+      // Initialiser avec la valeur du localStorage
+      const keepOpen = localStorage.getItem("keepMenuOpen") === "true";
+      keepOpenCheckbox.checked = keepOpen;
+
+      // Appliquer l'état initial
+      updateMenuState(keepOpen);
+
+      // Écouter les changements
+      keepOpenCheckbox.addEventListener("change", () => {
+        const newKeepOpen = keepOpenCheckbox.checked;
+        localStorage.setItem("keepMenuOpen", newKeepOpen.toString());
+
+        // Mettre à jour l'état du menu
+        updateMenuState(newKeepOpen);
+
+        // Si on active "keep open" et que le menu n'est pas ouvert, l'ouvrir
+        if (newKeepOpen && menuToggle && !menuToggle.checked) {
+          menuToggle.checked = true;
+          if (menu) {
+            menu.classList.remove("translate-x-full");
+            menu.classList.add("translate-x-0");
+          }
+        }
+      });
+    }
+
+    function updateMenuState(keepOpen) {
+      // Mettre à jour la classe du body
+      if (keepOpen) {
+        document.body.classList.add("menu-keep-open");
+        // Si keep open est activé, s'assurer que le menu est ouvert
+        if (menuToggle && menu) {
+          menuToggle.checked = true;
+          menu.classList.remove("translate-x-full");
+          menu.classList.add("translate-x-0");
+          // Désactiver les transitions
+          menu.classList.remove(
+            "transition-transform",
+            "duration-300",
+            "ease-in-out",
+          );
+        }
+      } else {
+        document.body.classList.remove("menu-keep-open");
+        // Réactiver les transitions
+        if (menu) {
+          menu.classList.add(
+            "transition-transform",
+            "duration-300",
+            "ease-in-out",
+          );
+        }
+      }
+    }
+  });
+</script> </div> <!-- Zone scrollable pour le menu --> <div class="flex-1 overflow-y-auto overflow-x-hidden px-4 lg:px-0 min-h-0 pb-40" data-astro-cid-52d4wjy7> <ul class="menu bg-transparent pt-0 w-full" data-astro-cid-52d4wjy7> <!-- ...existing menu items... --> <li class="menu-item-home" data-astro-cid-3lltiirq> <a class="fr" href="/" target data-astro-cid-3lltiirq> <span class="fr">🏠 Accueil</span> </a><a class="en" href="/" target data-astro-cid-3lltiirq> <span class="en">🏠 Home</span> </a><a class="de" href="/" target data-astro-cid-3lltiirq> <span class="de">🏠 Startseite</span> </a><a class="es" href="/" target data-astro-cid-3lltiirq> <span class="es">🏠 Inicio</span> </a><a class="it" href="/" target data-astro-cid-3lltiirq> <span class="it">🏠 Home</span> </a> </li>  <script type="module">document.addEventListener("DOMContentLoaded",()=>{document.querySelectorAll("a[data-action]").forEach(e=>{e.addEventListener("click",a=>{a.preventDefault();const t=e.getAttribute("data-action");switch(t){case"#clean_cache":confirm("Êtes-vous sûr de vouloir effacer tout le localStorage ?")&&(localStorage.clear(),location.reload());break;case"#other-action":break;default:console.warn(`Action non reconnue: ${t}`)}})})});</script> <li class="menu-item-form" data-astro-cid-3lltiirq> <a class="fr" href="/formulaire" target data-astro-cid-3lltiirq> <span class="fr">🤚 Je postule</span> </a><a class="en" href="/form" target data-astro-cid-3lltiirq> <span class="en">🤚 I Apply</span> </a><a class="de" href="/bilden" target data-astro-cid-3lltiirq> <span class="de">🤚 Ich bewerbe mich</span> </a><a class="es" href="/forma" target data-astro-cid-3lltiirq> <span class="es">🤚 Me postulo</span> </a><a class="it" href="/modulo" target data-astro-cid-3lltiirq> <span class="it">🤚 Faccio domanda</span> </a> </li>   <li class="menu-item-documents" data-astro-cid-3lltiirq> <a class="fr" href="/documents-dossier-de-location" target data-astro-cid-3lltiirq> <span class="fr">📂 Dossier de location</span> </a><a class="en" href="/rental-file-documents" target data-astro-cid-3lltiirq> <span class="en">📄 Requested Documents</span> </a><a class="de" href="/mietdateidokumente" target data-astro-cid-3lltiirq> <span class="de">📄 Angeforderte Dokumente</span> </a><a class="es" href="/documentos-del-archivo-de-alquiler" target data-astro-cid-3lltiirq> <span class="es">📄 Documentos solicitados</span> </a><a class="it" href="/documenti-dossier-locazione" target data-astro-cid-3lltiirq> <span class="it">📄 Documenti richiesti</span> </a> </li>   <li data-astro-cid-bkphkkal> <details data-menu="romains" data-astro-cid-bkphkkal> <summary class data-astro-cid-bkphkkal> <span class="fr">🏛️ Appartement Romains</span><span class="en">🏛️ Flat Romains</span><span class="de">🏛️ Wohnung Romains</span><span class="es">🏛️ Departamento Romains</span><span class="it">🏛️ Appartamento Romains</span> </summary> <ul data-astro-cid-bkphkkal>  <li class="menu-item-visit-romains" data-astro-cid-d4c3jo7i> <!-- Mode lien normal -->
+    <a class="fr" href="/romains/visite" data-astro-cid-d4c3jo7i> <span class="fr">🎥 Visite virtuelle</span> </a><a class="en" href="/romains/visit" data-astro-cid-d4c3jo7i> <span class="en">🎥 Virtual tour</span> </a><a class="de" href="/romains/besuchen" data-astro-cid-d4c3jo7i> <span class="de">🎥 Virtueller Besuch</span> </a><a class="es" href="/romains/visita" data-astro-cid-d4c3jo7i> <span class="es">🎥 Visita virtual</span> </a><a class="it" href="/romains/Visita" data-astro-cid-d4c3jo7i> <span class="it">🎥 Visita virtuale</span> </a> </li> <script>(function(){const locales = ["fr","en","de","es","it"];
+const pricesData = {"flats":{"engelbreit":{"caution":750,"insurance":8,"available":{"engelbreit-chambre-salon":"20/09","engelbreit-chambre-west":false,"engelbreit-chambre-north":false,"engelbreit-chambre-south":"01/11"}},"romains":{"caution":675,"insurance":8,"available":{"romains-chambre-cellier":false,"romains-chambre-cuisine":"15/09","romains-chambre-grandeD":"01/10","romains-chambre-grandeG":false,"romains-chambre-balcon":false}}},"rows":[{"flat":"engelbreit","labelKey":"engelbreit-chambre-salon","price_history":[{"date":"04/2023","nom":"Caroline Thalmann","price":398},{"date":"06/2024","nom":"Laurene Fouquet","price":398},{"date":"07/2025","nom":"Leya Cellier","price":410},{"date":"09/2025","price":429}],"size":10},{"flat":"engelbreit","labelKey":"engelbreit-chambre-west","price_history":[{"date":"05/2023","nom":"Pierrick Cotteau","price":410},{"date":"09/2023","nom":"Marie David","price":410},{"date":"05/2024","nom":"Aimen Jennah","price":410},{"date":"06/2024","nom":"Xavier Roulot","price":410},{"date":"08/2025","nom":"Mathilde Burg","price":430},{"date":"09/2025","price":440}],"size":11},{"flat":"engelbreit","labelKey":"engelbreit-chambre-north","price_history":[{"date":"04/2023","nom":"Charlotte Leconte","price":421},{"date":"02/2025","nom":"Natalia Dzioba","price":426},{"date":"08/2025","nom":"Louis Wanke","price":445},{"date":"09/2025","price":455}],"size":13},{"flat":"engelbreit","labelKey":"engelbreit-chambre-south","price_history":[{"date":"04/2023","nom":"Martin Faure","price":435},{"date":"03/2025","nom":"Martin Faure","price":445},{"date":"09/2025","price":460}],"size":15},{"flat":"romains","labelKey":"romains-chambre-cellier","size":9,"price_history":[{"nom":"Camille Pagano","date":"09/2024","price":349},{"nom":"Inga Kurtanidze","date":"02/2025","price":355},{"nom":"Maxime Hunke","date":"08/2025","price":375},{"date":"09/2025","price":389}]},{"flat":"romains","labelKey":"romains-chambre-cuisine","size":9,"price_history":[{"nom":"Thiziri Bouslimani","date":"09/2024","price":349},{"nom":"Marie Prévot","date":"02/2025","price":362},{"nom":"Féline Mayer","date":"08/2025","price":379},{"date":"09/2025","price":395}]},{"labelKey":"romains-chambre-grandeD","flat":"romains","size":11,"price_history":[{"nom":"Charlotte Maingreaud","date":"09/2024","price":365},{"nom":"Maxime Scaduto","date":"06/2025","price":376},{"date":"09/2025","price":411}]},{"flat":"romains","labelKey":"romains-chambre-grandeG","size":11,"price_history":[{"nom":"Maria Paula","date":"09/2024","price":365},{"nom":"Salome Abramishvili","date":"02/2025","price":370},{"nom":"Alice Thivant","date":"08/2025","price":385},{"date":"09/2025","price":410}]},{"flat":"romains","labelKey":"romains-chambre-balcon","size":9,"price_history":[{"nom":"Maelys Laugier","date":"09/2024","price":360},{"nom":"Joana Ponsenard","date":"06/2025","price":378},{"nom":"Lise Rotolo","date":"08/2025","price":390},{"date":"09/2025","price":418}]}],"mode":"default","schema":{"flat":"string","labelKey":"string","price_history":[{"date":"string","nom":"string","price":"number"}],"size":"number"}};
+
+  // Script pour construire dynamiquement les sections de visite et gérer la navigation temporelle
+  function initVisitNavigation() {
+    // Helper pour obtenir les informations d'une chambre
+    function getRoomInfo(labelKey) {
+      const room = pricesData.rows.find(room => room.labelKey === labelKey);
+      if (!room) return null;
+
+      return {
+        labelKey: room.labelKey,
+        size: room.size,
+        apartment: room.flat,
+        isBedroom: room.labelKey.includes('chambre')
+      };
+    }
+
+    // Helper pour formatter le titre avec emoji et taille
+    function formatRoomTitle(translatedTitle, translateKey) {
+      // Extraire la clé sans le préfixe 'rooms.' si présent
+      const labelKey = translateKey.startsWith('rooms.') ? translateKey.replace('rooms.', '') : translateKey;
+      const roomInfo = getRoomInfo(labelKey);
+
+      if (roomInfo?.isBedroom && roomInfo.size) {
+        // Si c'est une chambre et qu'on a la taille, ajouter l'emoji et la taille
+        // Nettoyer d'abord tout emoji existant
+        const cleanTitle = translatedTitle.replace(/🛏️\s*/, '');
+        return `🛏️ ${cleanTitle} ${roomInfo.size}m²`;
+      }
+
+      return translatedTitle;
+    }
+
+    const visitSectionsList = document.querySelector('.visit-sections-list');
+
+    if (!visitSectionsList) {
+      console.log('No visit sections list found - not on a visit page');
+      return;
+    }
+
+    // Vider la liste existante
+    visitSectionsList.innerHTML = '';
+
+    // Trouver tous les boutons timelink sur la page
+    const timelinkButtons = document.querySelectorAll('.timelink-btn');
+    console.log('Found', timelinkButtons.length, 'timelink buttons');
+
+    if (timelinkButtons.length === 0) {
+      console.warn('No timelink buttons found! Make sure VisitCard has timelinks prop.');
+      return;
+    }
+
+    // Liste des langues supportées depuis les helpers
+    const supportedLangs = locales;
+
+    // Fonctions pour générer les styles CSS
+    function getBaseStyles() {
+      return `
+        display: block;
+        padding: 2px 8px;
+        margin: 1px 0;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+        text-decoration: none;
+        border: none;
+        font-size: 14px;
+        line-height: 2.2;
+        font-weight: 500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        box-sizing: border-box;
+        cursor: pointer;
+        background: none;
+      `;
+    }
+
+    function getInactiveStyles() {
+      return getBaseStyles() + `
+        color: #333;
+        background: transparent;
+      `;
+    }
+
+    function getActiveStyles() {
+      return getBaseStyles() + `
+        color: white;
+        background-color: var(--color-primary);
+        font-weight: 600;
+        transform: translateX(1px);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      `;
+    }
+
+    // Construire dynamiquement la liste des sections à partir des boutons timelink
+    timelinkButtons.forEach((button) => {
+      const translateKey = button.getAttribute('data-translate-key');
+      const timecode = button.getAttribute('data-timecode');
+      const playerId = button.getAttribute('data-player-id');
+
+      if (translateKey && timecode !== null && playerId) {
+        const listItem = document.createElement('li');
+        const link = document.createElement('button');
+
+        link.className = 'visit-section-link';
+        link.setAttribute('data-timecode', timecode);
+        link.setAttribute('data-player-id', playerId);
+        link.setAttribute('data-translate-key', translateKey);
+
+        // Créer des spans pour chaque langue en récupérant le contenu HTML des spans traduits du bouton original
+        supportedLangs.forEach(lang => {
+          const span = document.createElement('span');
+          span.className = lang;
+
+          // Chercher le span avec la classe de langue spécifique dans le bouton original
+          let translatedSpan = button.querySelector(`span.${lang}`);
+
+          if (translatedSpan) {
+            // Copier le contenu HTML du span traduit
+            let originalContent = translatedSpan.innerHTML;
+
+            // Si la clé contient 'chambre' ET que le contenu ne contient pas déjà l'emoji, appliquer le formatage
+            if (translateKey && translateKey.includes('chambre') && !originalContent.includes('🛏️')) {
+              const textContent = translatedSpan.textContent || '';
+              const formattedTitle = formatRoomTitle(textContent, translateKey);
+              span.innerHTML = formattedTitle;
+            } else {
+              span.innerHTML = originalContent;
+            }
+          } else {
+            // Fallback: utiliser le text content du bouton
+            let fallbackText = button.textContent || translateKey;
+
+            // Si la clé contient 'chambre' ET que le contenu ne contient pas déjà l'emoji, appliquer le formatage
+            if (translateKey && translateKey.includes('chambre') && !fallbackText.includes('🛏️')) {
+              fallbackText = formatRoomTitle(fallbackText, translateKey);
+            }
+
+            span.textContent = fallbackText;
+          }
+
+          link.appendChild(span);
+        });
+
+        // Styles CSS inline par défaut
+        link.style.cssText = getInactiveStyles();
+
+        // Hover events
+        link.addEventListener('mouseenter', () => {
+          if (!link.dataset.active) {
+            link.style.backgroundColor = 'var(--color-primary)';
+            link.style.color = 'white';
+            link.style.transform = 'translateX(2px)';
+          }
+        });
+
+        link.addEventListener('mouseleave', () => {
+          if (!link.dataset.active) {
+            link.style.cssText = getInactiveStyles();
+          }
+        });
+
+        // Click event pour naviguer dans la vidéo
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          setActiveLink(link);
+          navigateToTimecode(parseInt(timecode), playerId);
+        });
+
+        listItem.appendChild(link);
+        visitSectionsList.appendChild(listItem);
+      }
+    });
+
+    // Fonction pour définir un lien comme actif
+    function setActiveLink(activeLink) {
+      // Désactiver tous les liens
+      document.querySelectorAll('.visit-section-link').forEach(link => {
+        const htmlLink = link;
+        htmlLink.dataset.active = '';
+        htmlLink.style.cssText = getInactiveStyles();
+      });
+
+      // Activer le lien sélectionné
+      if (activeLink) {
+        activeLink.dataset.active = 'true';
+        activeLink.style.cssText = getActiveStyles();
+        console.log('Activated menu item for timecode:', activeLink.getAttribute('data-timecode'));
+      }
+    }
+
+    // Fonction pour naviguer vers un timecode dans la vidéo
+    function navigateToTimecode(timecode, playerId) {
+      console.log(`Navigation vers timecode ${timecode}s pour le player ${playerId}`);
+
+      if (window.youtubePlayers && playerId && window.youtubePlayers[playerId] && timecode >= 0) {
+        window.youtubePlayers[playerId].seekTo(timecode);
+        window.youtubePlayers[playerId].playVideo();
+        console.log(`Vidéo positionnée à ${timecode} secondes`);
+
+        // Faire défiler vers la vidéo pour s'assurer qu'elle soit visible
+        const videoElement = document.getElementById(playerId);
+        if (videoElement) {
+          videoElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'nearest'
+          });
+        }
+      } else {
+        console.log("Player non trouvé ou timecode invalide");
+      }
+    }
+
+    // Fonction pour synchroniser le menu avec le timecode actuel de la vidéo
+    function syncWithCurrentTime() {
+      // Cette fonction pourrait être étendue pour détecter automatiquement
+      // le timecode actuel et mettre en surbrillance la section correspondante
+      // si besoin (nécessiterait un polling régulier du player YouTube)
+    }
+  }
+
+  // Initialiser quand le DOM est prêt
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initVisitNavigation);
+  } else {
+    initVisitNavigation();
+  }
+
+  // Réinitialiser lors des changements de langue
+  window.addEventListener('languagechange', initVisitNavigation);
+})();</script>  <li class="menu-item-romains-location" data-astro-cid-3lltiirq> <a class="fr" href="/romains/localisation" target data-astro-cid-3lltiirq> <span class="fr">📍 Localisation</span> </a><a class="en" href="/romains/location" target data-astro-cid-3lltiirq> <span class="en">📍 Location</span> </a><a class="de" href="/romains/standort" target data-astro-cid-3lltiirq> <span class="de">📍 Ort</span> </a><a class="es" href="/romains/ubicacion" target data-astro-cid-3lltiirq> <span class="es">📍 Ubicación</span> </a><a class="it" href="/romains/localizzazione" target data-astro-cid-3lltiirq> <span class="it">📍 Localizzazione</span> </a> </li>   <li class="menu-item-romains-prices" data-astro-cid-3lltiirq> <a class="fr" href="/romains/prix" target data-astro-cid-3lltiirq> <span class="fr">💰 Prix</span> </a><a class="en" href="/romains/price" target data-astro-cid-3lltiirq> <span class="en">💰 Price</span> </a><a class="de" href="/romains/preis" target data-astro-cid-3lltiirq> <span class="de">💰 Preis</span> </a><a class="es" href="/romains/precio" target data-astro-cid-3lltiirq> <span class="es">💰 Precio</span> </a><a class="it" href="/romains/prezzi" target data-astro-cid-3lltiirq> <span class="it">💰 Prezzo</span> </a> </li>   <li class="menu-item-pictures-romains" data-astro-cid-hwcqo2rx> <!-- Mode lien normal -->
+    <a class="fr" href="/romains/photos" data-astro-cid-hwcqo2rx> <span class="fr">📷 Photos</span> </a><a class="en" href="/romains/pictures" data-astro-cid-hwcqo2rx> <span class="en">📷 Photos</span> </a><a class="de" href="/romains/Fotos" data-astro-cid-hwcqo2rx> <span class="de">📷 Fotos</span> </a><a class="es" href="/romains/fotos" data-astro-cid-hwcqo2rx> <span class="es">📷 Fotos</span> </a><a class="it" href="/romains/foto" data-astro-cid-hwcqo2rx> <span class="it">📷 Foto</span> </a> </li> <script>(function(){const locales = ["fr","en","de","es","it"];
+
+  // Script simplifié pour construire dynamiquement les sections et gérer le scroll
+  function initPhotoNavigation() {
+    const photoSectionsList = document.querySelector('.photo-sections-list');
+
+    if (!photoSectionsList) {
+      console.log('No photo sections list found - not on a photos page');
+      return;
+    }
+
+    // Vider la liste existante
+    photoSectionsList.innerHTML = '';
+
+    // Trouver tous les éléments avec data-section-id
+    const sectionElements = document.querySelectorAll('[data-section-id]');
+    console.log('Found', sectionElements.length, 'sections with data-section-id');
+
+    if (sectionElements.length === 0) {
+      console.warn('No sections found! Make sure FixedTitle components have key props.');
+      return;
+    }
+
+    // Liste des langues supportées depuis les helpers
+    const supportedLangs = locales;
+
+    // Fonctions pour générer les styles CSS
+    function getBaseStyles() {
+      return `
+        display: block;
+        padding: 2px 8px;
+        margin: 1px 0;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+        text-decoration: none;
+        border: none;
+        font-size: 14px;
+        line-height: 2.2;
+        font-weight: 500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        box-sizing: border-box;
+      `;
+    }
+
+    function getInactiveStyles() {
+      return getBaseStyles() + `
+        color: #333;
+        background: transparent;
+      `;
+    }
+
+    function getActiveStyles() {
+      return getBaseStyles() + `
+        color: white;
+        background-color: var(--color-primary);
+        font-weight: 600;
+        transform: translateX(1px);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      `;
+    }
+
+    // Construire dynamiquement la liste des sections
+    sectionElements.forEach((element) => {
+      const sectionId = element.getAttribute('data-section-id');
+
+      if (sectionId) {
+        // Trouver le container de titre précédent
+        const titleContainer = element.previousElementSibling;
+
+        // Vérifier qu'il s'agit bien d'un h2 (ignorer h1, h3, etc.)
+        const h2Element = titleContainer?.querySelector('h2');
+        if (!h2Element) {
+          console.log(`Skipping section ${sectionId} - not an h2 title`);
+          return; // Ignorer cette section si ce n'est pas un h2
+        }
+
+        const listItem = document.createElement('li');
+        const link = document.createElement('a');
+
+        link.href = `#${sectionId}`;
+        link.className = 'photo-section-link';
+        link.setAttribute('data-section', sectionId);
+
+        // Créer des spans pour chaque langue en récupérant le contenu HTML des spans traduits
+        supportedLangs.forEach(lang => {
+          const span = document.createElement('span');
+          span.className = lang;
+
+          // Pour trouver les traductions, on doit chercher les spans avec les clés complètes "rooms.{sectionId}"
+          // car le composant T.astro utilise toujours les clés avec le préfixe "rooms."
+          const fullTranslationKey = `rooms.${sectionId}`;
+          let translatedSpan = h2Element.querySelector(`span.${lang}`);
+
+          if (translatedSpan) {
+            // Copier tout le contenu HTML du span traduit
+            span.innerHTML = translatedSpan.innerHTML;
+          } else {
+            // Fallback: utiliser la sectionId si aucun span spécifique trouvé
+            span.textContent = sectionId;
+          }
+
+          link.appendChild(span);
+        });
+
+        // Styles CSS inline par défaut
+        link.style.cssText = getInactiveStyles();
+
+        // Hover events
+        link.addEventListener('mouseenter', () => {
+          if (!link.dataset.active) {
+            link.style.backgroundColor = 'var(--color-primary)';
+            link.style.color = 'white';
+            link.style.transform = 'translateX(2px)';
+          }
+        });
+
+        link.addEventListener('mouseleave', () => {
+          if (!link.dataset.active) {
+            link.style.cssText = getInactiveStyles();
+          }
+        });
+
+        // Click event
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          setActiveLink(link);
+          scrollToSection(sectionId);
+          updateURL(sectionId);
+        });
+
+        listItem.appendChild(link);
+        photoSectionsList.appendChild(listItem);
+      }
+    });
+
+    // Fonction pour définir un lien comme actif
+    function setActiveLink(activeLink) {
+      // Désactiver tous les liens
+      document.querySelectorAll('.photo-section-link').forEach(link => {
+        const htmlLink = link;
+        htmlLink.dataset.active = '';
+        htmlLink.style.cssText = getInactiveStyles();
+      });
+
+      // Activer le lien sélectionné
+      if (activeLink) {
+        activeLink.dataset.active = 'true';
+        activeLink.style.cssText = getActiveStyles();
+        console.log('Activated menu item:', activeLink.getAttribute('data-section'));
+      }
+    }
+
+    // Fonction pour faire défiler vers une section
+    function scrollToSection(sectionId) {
+      const targetElement = document.querySelector(`[data-section-id="${sectionId}"]`);
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest'
+        });
+      }
+    }
+
+    // Fonction pour mettre à jour l'URL
+    function updateURL(sectionId) {
+      const newUrl = window.location.pathname + window.location.search + '#' + sectionId;
+      window.history.pushState(null, '', newUrl);
+    }
+
+    // Fonction pour synchroniser avec l'URL actuelle
+    function syncWithURL() {
+      const currentHash = window.location.hash.slice(1);
+      console.log('syncWithURL called with hash:', currentHash);
+
+      if (currentHash) {
+        // Vérifier d'abord si la section existe
+        const targetSection = document.querySelector(`[data-section-id="${currentHash}"]`);
+        if (!targetSection) {
+          console.warn('Section not found for hash:', currentHash);
+          return;
+        }
+
+        const targetLink = document.querySelector(`[data-section="${currentHash}"]`);
+        if (targetLink) {
+          setActiveLink(targetLink);
+          console.log('Scrolling to section:', currentHash);
+          // Faire défiler vers la section correspondante
+          scrollToSection(currentHash);
+        } else {
+          console.warn('Menu link not found for section:', currentHash);
+        }
+      } else {
+        setActiveLink(null);
+      }
+    }
+
+    // Fonction pour détecter la section active lors du scroll
+    function updateActiveOnScroll() {
+      let fixedSection = null;
+
+      sectionElements.forEach((element) => {
+        const sectionId = element.getAttribute('data-section-id');
+
+        // Trouver le titre associé à cette section
+        const titleContainer = element.previousElementSibling;
+        const titleElement = titleContainer?.querySelector('.fixed-title');
+
+        if (titleElement) {
+          const titleRect = titleElement.getBoundingClientRect();
+
+          // Un titre est considéré comme "fixed" quand il est collé en haut
+          // On vérifie s'il est dans la zone de titre fixe (0-80px du haut)
+          // et que sa section scroll-target est passée (rect.top <= position du titre fixe)
+          const sectionRect = element.getBoundingClientRect();
+
+          // Le titre est "fixed" si :
+          // 1. Le titre est proche du haut de l'écran (position sticky active)
+          // 2. La section scroll-target est au-dessus ou très proche du titre
+          if (titleRect.top <= 80 && titleRect.top >= 0 && sectionRect.top <= 80) {
+            fixedSection = sectionId;
+            console.log('Title is FIXED for section:', sectionId, 'title top:', titleRect.top, 'section top:', sectionRect.top);
+          }
+        }
+      });
+
+      // Ne mettre à jour l'URL que si on a un titre en position fixed
+      if (fixedSection) {
+        const currentHash = window.location.hash.slice(1);
+
+        // Mettre à jour seulement si différent
+        if (fixedSection !== currentHash) {
+          const targetLink = document.querySelector(`[data-section="${fixedSection}"]`);
+          if (targetLink) {
+            setActiveLink(targetLink);
+            // Mettre à jour l'URL sans ajouter à l'historique
+            const newUrl = window.location.pathname + window.location.search + '#' + fixedSection;
+            window.history.replaceState(null, '', newUrl);
+            console.log('URL updated to FIXED section:', fixedSection);
+          }
+        }
+      }
+
+      // Si aucun titre n'est fixed, on garde l'état actuel sans changer l'URL
+      // mais on peut désactiver visuellement le menu si souhaité
+    }
+
+    // Écouteurs d'événements pour le scroll
+    const mainElement = document.querySelector('main');
+    const bodyElement = document.body;
+    const windowElement = window;
+
+    let scrollTimer;
+
+    const handleScroll = () => {
+      clearTimeout(scrollTimer);
+      scrollTimer = window.setTimeout(() => {
+        console.log('Scroll detected, updating active section...');
+        updateActiveOnScroll();
+      }, 30);
+    };
+
+    // Écouter le scroll sur plusieurs éléments pour être sûr de le capturer
+    if (mainElement) {
+      mainElement.addEventListener('scroll', handleScroll);
+    }
+    document.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll);
+
+    // Aussi écouter les événements wheel pour détecter les scrolls à la molette
+    document.addEventListener('wheel', handleScroll, { passive: true });
+
+    // Gérer les changements d'URL
+    window.addEventListener('hashchange', syncWithURL);
+    window.addEventListener('popstate', syncWithURL);
+
+    // Synchronisation initiale avec plusieurs tentatives
+    setTimeout(syncWithURL, 200);
+    setTimeout(syncWithURL, 500);
+    setTimeout(syncWithURL, 1000);
+  }
+
+  // Initialiser
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPhotoNavigation);
+  } else {
+    initPhotoNavigation();
+  }
+
+  // Réinitialiser lors des changements de langue
+  window.addEventListener('languagechange', initPhotoNavigation);
+})();</script>  <li class="menu-item-romains-map" data-astro-cid-3lltiirq> <a class="fr" href="/romains/carte" target data-astro-cid-3lltiirq> <span class="fr">🗺️ Carte</span> </a> </li>    </ul> </details> </li> <script type="module">function n(){if(window.location.pathname!=="/")return;const o=window.location.hash;document.querySelectorAll("[data-menu]").forEach(e=>{const t=e,r=t.querySelector("summary");t.open=!1,r?.classList.remove("active")});const a=o.replace("#","")||null;if(a){const e=document.querySelector(`[data-menu="${a}"]`),t=e?.querySelector("summary");e&&(e.open=!0,t?.classList.add("active"))}}window.addEventListener("hashchange",n);document.addEventListener("DOMContentLoaded",n);</script>  <li data-astro-cid-bkphkkal> <details data-menu="engelbreit" data-astro-cid-bkphkkal> <summary class data-astro-cid-bkphkkal> <span class="fr">🥨 Appartement Engelbreit</span><span class="en">🥨 Flat Engelbreit</span><span class="de">🥨 Wohnung Engelbreit</span><span class="es">🥨 Departamento Engelbreit</span><span class="it">🥨 Appartamento Engelbreit</span> </summary> <ul data-astro-cid-bkphkkal>  <li class="menu-item-engelbreit-" data-astro-cid-3lltiirq> <a class="fr" href="/engelbreit/" target data-astro-cid-3lltiirq> <span class="fr">🔍 Aperçu</span> </a><a class="en" href="/engelbreit/" target data-astro-cid-3lltiirq> <span class="en">🔍 Overview</span> </a><a class="de" href="/engelbreit/" target data-astro-cid-3lltiirq> <span class="de">🔍 Übersicht</span> </a><a class="es" href="/engelbreit/" target data-astro-cid-3lltiirq> <span class="es">📌 Descripción general</span> </a><a class="it" href="/engelbreit/" target data-astro-cid-3lltiirq> <span class="it">🔍 Panoramica</span> </a> </li>   <li class="menu-item-visit-engelbreit" data-astro-cid-d4c3jo7i> <!-- Mode lien normal -->
+    <a class="fr" href="/engelbreit/visite" data-astro-cid-d4c3jo7i> <span class="fr">🎥 Visite virtuelle</span> </a><a class="en" href="/engelbreit/visit" data-astro-cid-d4c3jo7i> <span class="en">🎥 Virtual tour</span> </a><a class="de" href="/engelbreit/besuchen" data-astro-cid-d4c3jo7i> <span class="de">🎥 Virtueller Besuch</span> </a><a class="es" href="/engelbreit/visita" data-astro-cid-d4c3jo7i> <span class="es">🎥 Visita virtual</span> </a><a class="it" href="/engelbreit/Visita" data-astro-cid-d4c3jo7i> <span class="it">🎥 Visita virtuale</span> </a> </li> <script>(function(){const locales = ["fr","en","de","es","it"];
+const pricesData = {"flats":{"engelbreit":{"caution":750,"insurance":8,"available":{"engelbreit-chambre-salon":"20/09","engelbreit-chambre-west":false,"engelbreit-chambre-north":false,"engelbreit-chambre-south":"01/11"}},"romains":{"caution":675,"insurance":8,"available":{"romains-chambre-cellier":false,"romains-chambre-cuisine":"15/09","romains-chambre-grandeD":"01/10","romains-chambre-grandeG":false,"romains-chambre-balcon":false}}},"rows":[{"flat":"engelbreit","labelKey":"engelbreit-chambre-salon","price_history":[{"date":"04/2023","nom":"Caroline Thalmann","price":398},{"date":"06/2024","nom":"Laurene Fouquet","price":398},{"date":"07/2025","nom":"Leya Cellier","price":410},{"date":"09/2025","price":429}],"size":10},{"flat":"engelbreit","labelKey":"engelbreit-chambre-west","price_history":[{"date":"05/2023","nom":"Pierrick Cotteau","price":410},{"date":"09/2023","nom":"Marie David","price":410},{"date":"05/2024","nom":"Aimen Jennah","price":410},{"date":"06/2024","nom":"Xavier Roulot","price":410},{"date":"08/2025","nom":"Mathilde Burg","price":430},{"date":"09/2025","price":440}],"size":11},{"flat":"engelbreit","labelKey":"engelbreit-chambre-north","price_history":[{"date":"04/2023","nom":"Charlotte Leconte","price":421},{"date":"02/2025","nom":"Natalia Dzioba","price":426},{"date":"08/2025","nom":"Louis Wanke","price":445},{"date":"09/2025","price":455}],"size":13},{"flat":"engelbreit","labelKey":"engelbreit-chambre-south","price_history":[{"date":"04/2023","nom":"Martin Faure","price":435},{"date":"03/2025","nom":"Martin Faure","price":445},{"date":"09/2025","price":460}],"size":15},{"flat":"romains","labelKey":"romains-chambre-cellier","size":9,"price_history":[{"nom":"Camille Pagano","date":"09/2024","price":349},{"nom":"Inga Kurtanidze","date":"02/2025","price":355},{"nom":"Maxime Hunke","date":"08/2025","price":375},{"date":"09/2025","price":389}]},{"flat":"romains","labelKey":"romains-chambre-cuisine","size":9,"price_history":[{"nom":"Thiziri Bouslimani","date":"09/2024","price":349},{"nom":"Marie Prévot","date":"02/2025","price":362},{"nom":"Féline Mayer","date":"08/2025","price":379},{"date":"09/2025","price":395}]},{"labelKey":"romains-chambre-grandeD","flat":"romains","size":11,"price_history":[{"nom":"Charlotte Maingreaud","date":"09/2024","price":365},{"nom":"Maxime Scaduto","date":"06/2025","price":376},{"date":"09/2025","price":411}]},{"flat":"romains","labelKey":"romains-chambre-grandeG","size":11,"price_history":[{"nom":"Maria Paula","date":"09/2024","price":365},{"nom":"Salome Abramishvili","date":"02/2025","price":370},{"nom":"Alice Thivant","date":"08/2025","price":385},{"date":"09/2025","price":410}]},{"flat":"romains","labelKey":"romains-chambre-balcon","size":9,"price_history":[{"nom":"Maelys Laugier","date":"09/2024","price":360},{"nom":"Joana Ponsenard","date":"06/2025","price":378},{"nom":"Lise Rotolo","date":"08/2025","price":390},{"date":"09/2025","price":418}]}],"mode":"default","schema":{"flat":"string","labelKey":"string","price_history":[{"date":"string","nom":"string","price":"number"}],"size":"number"}};
+
+  // Script pour construire dynamiquement les sections de visite et gérer la navigation temporelle
+  function initVisitNavigation() {
+    // Helper pour obtenir les informations d'une chambre
+    function getRoomInfo(labelKey) {
+      const room = pricesData.rows.find(room => room.labelKey === labelKey);
+      if (!room) return null;
+
+      return {
+        labelKey: room.labelKey,
+        size: room.size,
+        apartment: room.flat,
+        isBedroom: room.labelKey.includes('chambre')
+      };
+    }
+
+    // Helper pour formatter le titre avec emoji et taille
+    function formatRoomTitle(translatedTitle, translateKey) {
+      // Extraire la clé sans le préfixe 'rooms.' si présent
+      const labelKey = translateKey.startsWith('rooms.') ? translateKey.replace('rooms.', '') : translateKey;
+      const roomInfo = getRoomInfo(labelKey);
+
+      if (roomInfo?.isBedroom && roomInfo.size) {
+        // Si c'est une chambre et qu'on a la taille, ajouter l'emoji et la taille
+        // Nettoyer d'abord tout emoji existant
+        const cleanTitle = translatedTitle.replace(/🛏️\s*/, '');
+        return `🛏️ ${cleanTitle} ${roomInfo.size}m²`;
+      }
+
+      return translatedTitle;
+    }
+
+    const visitSectionsList = document.querySelector('.visit-sections-list');
+
+    if (!visitSectionsList) {
+      console.log('No visit sections list found - not on a visit page');
+      return;
+    }
+
+    // Vider la liste existante
+    visitSectionsList.innerHTML = '';
+
+    // Trouver tous les boutons timelink sur la page
+    const timelinkButtons = document.querySelectorAll('.timelink-btn');
+    console.log('Found', timelinkButtons.length, 'timelink buttons');
+
+    if (timelinkButtons.length === 0) {
+      console.warn('No timelink buttons found! Make sure VisitCard has timelinks prop.');
+      return;
+    }
+
+    // Liste des langues supportées depuis les helpers
+    const supportedLangs = locales;
+
+    // Fonctions pour générer les styles CSS
+    function getBaseStyles() {
+      return `
+        display: block;
+        padding: 2px 8px;
+        margin: 1px 0;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+        text-decoration: none;
+        border: none;
+        font-size: 14px;
+        line-height: 2.2;
+        font-weight: 500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        box-sizing: border-box;
+        cursor: pointer;
+        background: none;
+      `;
+    }
+
+    function getInactiveStyles() {
+      return getBaseStyles() + `
+        color: #333;
+        background: transparent;
+      `;
+    }
+
+    function getActiveStyles() {
+      return getBaseStyles() + `
+        color: white;
+        background-color: var(--color-primary);
+        font-weight: 600;
+        transform: translateX(1px);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      `;
+    }
+
+    // Construire dynamiquement la liste des sections à partir des boutons timelink
+    timelinkButtons.forEach((button) => {
+      const translateKey = button.getAttribute('data-translate-key');
+      const timecode = button.getAttribute('data-timecode');
+      const playerId = button.getAttribute('data-player-id');
+
+      if (translateKey && timecode !== null && playerId) {
+        const listItem = document.createElement('li');
+        const link = document.createElement('button');
+
+        link.className = 'visit-section-link';
+        link.setAttribute('data-timecode', timecode);
+        link.setAttribute('data-player-id', playerId);
+        link.setAttribute('data-translate-key', translateKey);
+
+        // Créer des spans pour chaque langue en récupérant le contenu HTML des spans traduits du bouton original
+        supportedLangs.forEach(lang => {
+          const span = document.createElement('span');
+          span.className = lang;
+
+          // Chercher le span avec la classe de langue spécifique dans le bouton original
+          let translatedSpan = button.querySelector(`span.${lang}`);
+
+          if (translatedSpan) {
+            // Copier le contenu HTML du span traduit
+            let originalContent = translatedSpan.innerHTML;
+
+            // Si la clé contient 'chambre' ET que le contenu ne contient pas déjà l'emoji, appliquer le formatage
+            if (translateKey && translateKey.includes('chambre') && !originalContent.includes('🛏️')) {
+              const textContent = translatedSpan.textContent || '';
+              const formattedTitle = formatRoomTitle(textContent, translateKey);
+              span.innerHTML = formattedTitle;
+            } else {
+              span.innerHTML = originalContent;
+            }
+          } else {
+            // Fallback: utiliser le text content du bouton
+            let fallbackText = button.textContent || translateKey;
+
+            // Si la clé contient 'chambre' ET que le contenu ne contient pas déjà l'emoji, appliquer le formatage
+            if (translateKey && translateKey.includes('chambre') && !fallbackText.includes('🛏️')) {
+              fallbackText = formatRoomTitle(fallbackText, translateKey);
+            }
+
+            span.textContent = fallbackText;
+          }
+
+          link.appendChild(span);
+        });
+
+        // Styles CSS inline par défaut
+        link.style.cssText = getInactiveStyles();
+
+        // Hover events
+        link.addEventListener('mouseenter', () => {
+          if (!link.dataset.active) {
+            link.style.backgroundColor = 'var(--color-primary)';
+            link.style.color = 'white';
+            link.style.transform = 'translateX(2px)';
+          }
+        });
+
+        link.addEventListener('mouseleave', () => {
+          if (!link.dataset.active) {
+            link.style.cssText = getInactiveStyles();
+          }
+        });
+
+        // Click event pour naviguer dans la vidéo
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          setActiveLink(link);
+          navigateToTimecode(parseInt(timecode), playerId);
+        });
+
+        listItem.appendChild(link);
+        visitSectionsList.appendChild(listItem);
+      }
+    });
+
+    // Fonction pour définir un lien comme actif
+    function setActiveLink(activeLink) {
+      // Désactiver tous les liens
+      document.querySelectorAll('.visit-section-link').forEach(link => {
+        const htmlLink = link;
+        htmlLink.dataset.active = '';
+        htmlLink.style.cssText = getInactiveStyles();
+      });
+
+      // Activer le lien sélectionné
+      if (activeLink) {
+        activeLink.dataset.active = 'true';
+        activeLink.style.cssText = getActiveStyles();
+        console.log('Activated menu item for timecode:', activeLink.getAttribute('data-timecode'));
+      }
+    }
+
+    // Fonction pour naviguer vers un timecode dans la vidéo
+    function navigateToTimecode(timecode, playerId) {
+      console.log(`Navigation vers timecode ${timecode}s pour le player ${playerId}`);
+
+      if (window.youtubePlayers && playerId && window.youtubePlayers[playerId] && timecode >= 0) {
+        window.youtubePlayers[playerId].seekTo(timecode);
+        window.youtubePlayers[playerId].playVideo();
+        console.log(`Vidéo positionnée à ${timecode} secondes`);
+
+        // Faire défiler vers la vidéo pour s'assurer qu'elle soit visible
+        const videoElement = document.getElementById(playerId);
+        if (videoElement) {
+          videoElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'center',
+            inline: 'nearest'
+          });
+        }
+      } else {
+        console.log("Player non trouvé ou timecode invalide");
+      }
+    }
+
+    // Fonction pour synchroniser le menu avec le timecode actuel de la vidéo
+    function syncWithCurrentTime() {
+      // Cette fonction pourrait être étendue pour détecter automatiquement
+      // le timecode actuel et mettre en surbrillance la section correspondante
+      // si besoin (nécessiterait un polling régulier du player YouTube)
+    }
+  }
+
+  // Initialiser quand le DOM est prêt
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initVisitNavigation);
+  } else {
+    initVisitNavigation();
+  }
+
+  // Réinitialiser lors des changements de langue
+  window.addEventListener('languagechange', initVisitNavigation);
+})();</script>  <li class="menu-item-engelbreit-location" data-astro-cid-3lltiirq> <a class="fr" href="/engelbreit/localisation" target data-astro-cid-3lltiirq> <span class="fr">📍 Localisation</span> </a><a class="en" href="/engelbreit/location" target data-astro-cid-3lltiirq> <span class="en">📍 Location</span> </a><a class="de" href="/engelbreit/standort" target data-astro-cid-3lltiirq> <span class="de">📍 Ort</span> </a><a class="es" href="/engelbreit/ubicacion" target data-astro-cid-3lltiirq> <span class="es">📍 Ubicación</span> </a><a class="it" href="/engelbreit/localizzazione" target data-astro-cid-3lltiirq> <span class="it">📍 Localizzazione</span> </a> </li>   <li class="menu-item-engelbreit-prices" data-astro-cid-3lltiirq> <a class="fr" href="/engelbreit/prix" target data-astro-cid-3lltiirq> <span class="fr">💰 Prix</span> </a><a class="en" href="/engelbreit/price" target data-astro-cid-3lltiirq> <span class="en">💰 Price</span> </a><a class="de" href="/engelbreit/preis" target data-astro-cid-3lltiirq> <span class="de">💰 Preis</span> </a><a class="es" href="/engelbreit/precio" target data-astro-cid-3lltiirq> <span class="es">💰 Precio</span> </a><a class="it" href="/engelbreit/prezzi" target data-astro-cid-3lltiirq> <span class="it">💰 Prezzo</span> </a> </li>   <li class="menu-item-pictures-engelbreit" data-astro-cid-hwcqo2rx> <!-- Mode lien normal -->
+    <a class="fr" href="/engelbreit/photos" data-astro-cid-hwcqo2rx> <span class="fr">📷 Photos</span> </a><a class="en" href="/engelbreit/pictures" data-astro-cid-hwcqo2rx> <span class="en">📷 Photos</span> </a><a class="de" href="/engelbreit/Fotos" data-astro-cid-hwcqo2rx> <span class="de">📷 Fotos</span> </a><a class="es" href="/engelbreit/fotos" data-astro-cid-hwcqo2rx> <span class="es">📷 Fotos</span> </a><a class="it" href="/engelbreit/foto" data-astro-cid-hwcqo2rx> <span class="it">📷 Foto</span> </a> </li> <script>(function(){const locales = ["fr","en","de","es","it"];
+
+  // Script simplifié pour construire dynamiquement les sections et gérer le scroll
+  function initPhotoNavigation() {
+    const photoSectionsList = document.querySelector('.photo-sections-list');
+
+    if (!photoSectionsList) {
+      console.log('No photo sections list found - not on a photos page');
+      return;
+    }
+
+    // Vider la liste existante
+    photoSectionsList.innerHTML = '';
+
+    // Trouver tous les éléments avec data-section-id
+    const sectionElements = document.querySelectorAll('[data-section-id]');
+    console.log('Found', sectionElements.length, 'sections with data-section-id');
+
+    if (sectionElements.length === 0) {
+      console.warn('No sections found! Make sure FixedTitle components have key props.');
+      return;
+    }
+
+    // Liste des langues supportées depuis les helpers
+    const supportedLangs = locales;
+
+    // Fonctions pour générer les styles CSS
+    function getBaseStyles() {
+      return `
+        display: block;
+        padding: 2px 8px;
+        margin: 1px 0;
+        border-radius: 4px;
+        transition: all 0.2s ease;
+        text-decoration: none;
+        border: none;
+        font-size: 14px;
+        line-height: 2.2;
+        font-weight: 500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        box-sizing: border-box;
+      `;
+    }
+
+    function getInactiveStyles() {
+      return getBaseStyles() + `
+        color: #333;
+        background: transparent;
+      `;
+    }
+
+    function getActiveStyles() {
+      return getBaseStyles() + `
+        color: white;
+        background-color: var(--color-primary);
+        font-weight: 600;
+        transform: translateX(1px);
+        box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      `;
+    }
+
+    // Construire dynamiquement la liste des sections
+    sectionElements.forEach((element) => {
+      const sectionId = element.getAttribute('data-section-id');
+
+      if (sectionId) {
+        // Trouver le container de titre précédent
+        const titleContainer = element.previousElementSibling;
+
+        // Vérifier qu'il s'agit bien d'un h2 (ignorer h1, h3, etc.)
+        const h2Element = titleContainer?.querySelector('h2');
+        if (!h2Element) {
+          console.log(`Skipping section ${sectionId} - not an h2 title`);
+          return; // Ignorer cette section si ce n'est pas un h2
+        }
+
+        const listItem = document.createElement('li');
+        const link = document.createElement('a');
+
+        link.href = `#${sectionId}`;
+        link.className = 'photo-section-link';
+        link.setAttribute('data-section', sectionId);
+
+        // Créer des spans pour chaque langue en récupérant le contenu HTML des spans traduits
+        supportedLangs.forEach(lang => {
+          const span = document.createElement('span');
+          span.className = lang;
+
+          // Pour trouver les traductions, on doit chercher les spans avec les clés complètes "rooms.{sectionId}"
+          // car le composant T.astro utilise toujours les clés avec le préfixe "rooms."
+          const fullTranslationKey = `rooms.${sectionId}`;
+          let translatedSpan = h2Element.querySelector(`span.${lang}`);
+
+          if (translatedSpan) {
+            // Copier tout le contenu HTML du span traduit
+            span.innerHTML = translatedSpan.innerHTML;
+          } else {
+            // Fallback: utiliser la sectionId si aucun span spécifique trouvé
+            span.textContent = sectionId;
+          }
+
+          link.appendChild(span);
+        });
+
+        // Styles CSS inline par défaut
+        link.style.cssText = getInactiveStyles();
+
+        // Hover events
+        link.addEventListener('mouseenter', () => {
+          if (!link.dataset.active) {
+            link.style.backgroundColor = 'var(--color-primary)';
+            link.style.color = 'white';
+            link.style.transform = 'translateX(2px)';
+          }
+        });
+
+        link.addEventListener('mouseleave', () => {
+          if (!link.dataset.active) {
+            link.style.cssText = getInactiveStyles();
+          }
+        });
+
+        // Click event
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          setActiveLink(link);
+          scrollToSection(sectionId);
+          updateURL(sectionId);
+        });
+
+        listItem.appendChild(link);
+        photoSectionsList.appendChild(listItem);
+      }
+    });
+
+    // Fonction pour définir un lien comme actif
+    function setActiveLink(activeLink) {
+      // Désactiver tous les liens
+      document.querySelectorAll('.photo-section-link').forEach(link => {
+        const htmlLink = link;
+        htmlLink.dataset.active = '';
+        htmlLink.style.cssText = getInactiveStyles();
+      });
+
+      // Activer le lien sélectionné
+      if (activeLink) {
+        activeLink.dataset.active = 'true';
+        activeLink.style.cssText = getActiveStyles();
+        console.log('Activated menu item:', activeLink.getAttribute('data-section'));
+      }
+    }
+
+    // Fonction pour faire défiler vers une section
+    function scrollToSection(sectionId) {
+      const targetElement = document.querySelector(`[data-section-id="${sectionId}"]`);
+      if (targetElement) {
+        targetElement.scrollIntoView({
+          behavior: 'smooth',
+          block: 'start',
+          inline: 'nearest'
+        });
+      }
+    }
+
+    // Fonction pour mettre à jour l'URL
+    function updateURL(sectionId) {
+      const newUrl = window.location.pathname + window.location.search + '#' + sectionId;
+      window.history.pushState(null, '', newUrl);
+    }
+
+    // Fonction pour synchroniser avec l'URL actuelle
+    function syncWithURL() {
+      const currentHash = window.location.hash.slice(1);
+      console.log('syncWithURL called with hash:', currentHash);
+
+      if (currentHash) {
+        // Vérifier d'abord si la section existe
+        const targetSection = document.querySelector(`[data-section-id="${currentHash}"]`);
+        if (!targetSection) {
+          console.warn('Section not found for hash:', currentHash);
+          return;
+        }
+
+        const targetLink = document.querySelector(`[data-section="${currentHash}"]`);
+        if (targetLink) {
+          setActiveLink(targetLink);
+          console.log('Scrolling to section:', currentHash);
+          // Faire défiler vers la section correspondante
+          scrollToSection(currentHash);
+        } else {
+          console.warn('Menu link not found for section:', currentHash);
+        }
+      } else {
+        setActiveLink(null);
+      }
+    }
+
+    // Fonction pour détecter la section active lors du scroll
+    function updateActiveOnScroll() {
+      let fixedSection = null;
+
+      sectionElements.forEach((element) => {
+        const sectionId = element.getAttribute('data-section-id');
+
+        // Trouver le titre associé à cette section
+        const titleContainer = element.previousElementSibling;
+        const titleElement = titleContainer?.querySelector('.fixed-title');
+
+        if (titleElement) {
+          const titleRect = titleElement.getBoundingClientRect();
+
+          // Un titre est considéré comme "fixed" quand il est collé en haut
+          // On vérifie s'il est dans la zone de titre fixe (0-80px du haut)
+          // et que sa section scroll-target est passée (rect.top <= position du titre fixe)
+          const sectionRect = element.getBoundingClientRect();
+
+          // Le titre est "fixed" si :
+          // 1. Le titre est proche du haut de l'écran (position sticky active)
+          // 2. La section scroll-target est au-dessus ou très proche du titre
+          if (titleRect.top <= 80 && titleRect.top >= 0 && sectionRect.top <= 80) {
+            fixedSection = sectionId;
+            console.log('Title is FIXED for section:', sectionId, 'title top:', titleRect.top, 'section top:', sectionRect.top);
+          }
+        }
+      });
+
+      // Ne mettre à jour l'URL que si on a un titre en position fixed
+      if (fixedSection) {
+        const currentHash = window.location.hash.slice(1);
+
+        // Mettre à jour seulement si différent
+        if (fixedSection !== currentHash) {
+          const targetLink = document.querySelector(`[data-section="${fixedSection}"]`);
+          if (targetLink) {
+            setActiveLink(targetLink);
+            // Mettre à jour l'URL sans ajouter à l'historique
+            const newUrl = window.location.pathname + window.location.search + '#' + fixedSection;
+            window.history.replaceState(null, '', newUrl);
+            console.log('URL updated to FIXED section:', fixedSection);
+          }
+        }
+      }
+
+      // Si aucun titre n'est fixed, on garde l'état actuel sans changer l'URL
+      // mais on peut désactiver visuellement le menu si souhaité
+    }
+
+    // Écouteurs d'événements pour le scroll
+    const mainElement = document.querySelector('main');
+    const bodyElement = document.body;
+    const windowElement = window;
+
+    let scrollTimer;
+
+    const handleScroll = () => {
+      clearTimeout(scrollTimer);
+      scrollTimer = window.setTimeout(() => {
+        console.log('Scroll detected, updating active section...');
+        updateActiveOnScroll();
+      }, 30);
+    };
+
+    // Écouter le scroll sur plusieurs éléments pour être sûr de le capturer
+    if (mainElement) {
+      mainElement.addEventListener('scroll', handleScroll);
+    }
+    document.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll);
+
+    // Aussi écouter les événements wheel pour détecter les scrolls à la molette
+    document.addEventListener('wheel', handleScroll, { passive: true });
+
+    // Gérer les changements d'URL
+    window.addEventListener('hashchange', syncWithURL);
+    window.addEventListener('popstate', syncWithURL);
+
+    // Synchronisation initiale avec plusieurs tentatives
+    setTimeout(syncWithURL, 200);
+    setTimeout(syncWithURL, 500);
+    setTimeout(syncWithURL, 1000);
+  }
+
+  // Initialiser
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initPhotoNavigation);
+  } else {
+    initPhotoNavigation();
+  }
+
+  // Réinitialiser lors des changements de langue
+  window.addEventListener('languagechange', initPhotoNavigation);
+})();</script>  <li class="menu-item-engelbreit-map" data-astro-cid-3lltiirq> <a class="fr" href="/engelbreit/carte" target data-astro-cid-3lltiirq> <span class="fr">🗺️ Carte</span> </a> </li>    </ul> </details> </li>   <li class="menu-item-steps" data-astro-cid-3lltiirq> <a class="fr" href="/étapes-location" target data-astro-cid-3lltiirq> <span class="fr">🪜 Étapes pour louer</span> </a><a class="en" href="/rental-steps" target data-astro-cid-3lltiirq> <span class="en"></span> </a><a class="de" href="/mietschritte" target data-astro-cid-3lltiirq> <span class="de"></span> </a><a class="es" href="/pasos-alquiler" target data-astro-cid-3lltiirq> <span class="es"></span> </a><a class="it" href="/passi-affitto" target data-astro-cid-3lltiirq> <span class="it"></span> </a> </li>   <li class="menu-item-contact" data-astro-cid-3lltiirq> <a class="fr" href="/contacter" target data-astro-cid-3lltiirq> <span class="fr">📞 Contact</span> </a><a class="en" href="/contact" target data-astro-cid-3lltiirq> <span class="en">📞 Contact</span> </a><a class="de" href="/kontakt" target data-astro-cid-3lltiirq> <span class="de">📞 Kontakt</span> </a><a class="es" href="/contacto" target data-astro-cid-3lltiirq> <span class="es">📞 Contacto</span> </a><a class="it" href="/contatti" target data-astro-cid-3lltiirq> <span class="it">📞 Contatti</span> </a> </li>   <li data-astro-cid-bkphkkal> <details data-menu="tenants" data-astro-cid-bkphkkal> <summary class data-astro-cid-bkphkkal> <span class="fr">🛏️ Espace Locataire</span><span class="en"></span><span class="de"></span><span class="es"></span><span class="it"></span> </summary> <ul data-astro-cid-bkphkkal>  <li class="menu-item-tenants-departure" data-astro-cid-3lltiirq> <a class="fr" href="/tenants/depart" target data-astro-cid-3lltiirq> <span class="fr">🚪 Je m'en vais !</span> </a><a class="en" href="/tenants/departure" target data-astro-cid-3lltiirq> <span class="en">🚪 I'm going!</span> </a><a class="de" href="/tenants/abfahrt" target data-astro-cid-3lltiirq> <span class="de">🚪 Ich gehe!</span> </a><a class="es" href="/tenants/partida" target data-astro-cid-3lltiirq> <span class="es">🚪 ¡Voy!</span> </a><a class="it" href="/tenants/partenza" target data-astro-cid-3lltiirq> <span class="it">🚪 Me ne vado!</span> </a> </li>   <li class="menu-item-tenants-rentila" data-astro-cid-3lltiirq> <a class="fr" href="/tenants/rentila" target data-astro-cid-3lltiirq> <span class="fr">🏠 Quittances sur Rentila</span> </a><a class="en" href="/tenants/rentila" target data-astro-cid-3lltiirq> <span class="en"></span> </a><a class="de" href="/tenants/rentila" target data-astro-cid-3lltiirq> <span class="de"></span> </a><a class="es" href="/tenants/rentila" target data-astro-cid-3lltiirq> <span class="es"></span> </a><a class="it" href="/tenants/rentila" target data-astro-cid-3lltiirq> <span class="it"></span> </a> </li>   <li class="menu-item-tenants-apps" data-astro-cid-3lltiirq> <a class="fr" href="/tenants/applications-utiles" target data-astro-cid-3lltiirq> <span class="fr">📱 Applications utiles</span> </a> </li>   <li class="menu-item-tenants-infos-romains" data-astro-cid-3lltiirq> <a class="fr" href="/tenants/infos-romains" target data-astro-cid-3lltiirq> <span class="fr">ℹ️ Romains: Infos</span> </a><a class="en" href="/tenants/infos-romains" target data-astro-cid-3lltiirq> <span class="en"></span> </a><a class="de" href="/tenants/infos-romains" target data-astro-cid-3lltiirq> <span class="de"></span> </a><a class="es" href="/tenants/infos-romains" target data-astro-cid-3lltiirq> <span class="es"></span> </a><a class="it" href="/tenants/infos-romains" target data-astro-cid-3lltiirq> <span class="it"></span> </a> </li>   <li class="menu-item-tenants-videos-romains" data-astro-cid-3lltiirq> <a class="fr" href="/tenants/videos-romains" target data-astro-cid-3lltiirq> <span class="fr">🎬 Romains: Vidéos d'infos </span> </a><a class="en" href="/tenants/videos-romains" target data-astro-cid-3lltiirq> <span class="en"></span> </a><a class="de" href="/tenants/videos-romains" target data-astro-cid-3lltiirq> <span class="de"></span> </a><a class="es" href="/tenants/videos-romains" target data-astro-cid-3lltiirq> <span class="es"></span> </a><a class="it" href="/tenants/videos-romains" target data-astro-cid-3lltiirq> <span class="it"></span> </a> </li>   <li class="menu-item-tenants-infos-engelbreit" data-astro-cid-3lltiirq> <a class="fr" href="/tenants/infos-engelbreit" target data-astro-cid-3lltiirq> <span class="fr">ℹ️ Engelbreit: Infos</span> </a><a class="en" href="/tenants/infos-engelbreit" target data-astro-cid-3lltiirq> <span class="en"></span> </a><a class="de" href="/tenants/infos-engelbreit" target data-astro-cid-3lltiirq> <span class="de"></span> </a><a class="es" href="/tenants/infos-engelbreit" target data-astro-cid-3lltiirq> <span class="es"></span> </a><a class="it" href="/tenants/infos-engelbreit" target data-astro-cid-3lltiirq> <span class="it"></span> </a> </li>   <li class="menu-item-tenants-videos-engelbreit" data-astro-cid-3lltiirq> <a class="fr" href="/tenants/videos-engelbreit" target data-astro-cid-3lltiirq> <span class="fr">🎬 Engelbreit: Vidéos d'infos </span> </a><a class="en" href="/tenants/videos-engelbreit" target data-astro-cid-3lltiirq> <span class="en"></span> </a><a class="de" href="/tenants/videos-engelbreit" target data-astro-cid-3lltiirq> <span class="de"></span> </a><a class="es" href="/tenants/videos-engelbreit" target data-astro-cid-3lltiirq> <span class="es"></span> </a><a class="it" href="/tenants/videos-engelbreit" target data-astro-cid-3lltiirq> <span class="it"></span> </a> </li>    </ul> </details> </li>   <br data-astro-cid-52d4wjy7> <li class="menu-item-at-email_contact" data-astro-cid-3lltiirq> <a class="fr" href="mailto:?subject=Appartement%20Colocation&#38;body=Rentre%20ton%20email%2C%20pour%20t%27envoyer%20le%20lien%20%C3%A0%20toi%20m%C3%AAme%2C%20ou%20celui%20d%27un%20contact%20pour%20partager%20le%20site%20%3A%0Ahttps%3A%2F%2Fdavidbabel.github.io%2Flocatif%2F" target="true" data-astro-cid-3lltiirq> <span class="fr">🖥️ Ouvrir sur ordinateur &nbsp;&nbsp;&nbsp;↗️</span> </a><a class="en" href="mailto:?subject=Apartment%20Colocation&#38;body=Enter%20your%20email%2C%20to%20send%20the%20link%20to%20yourself%2C%20or%20that%20of%20a%20contact%20to%20share%20the%20site%3A%0Ahttps%3A%2F%2Fdavidbabel.github.io%2Flocatif%2F" target="true" data-astro-cid-3lltiirq> <span class="en">🖥️ See on a computer</span> </a><a class="de" href="mailto:?subject=Wohnung%20Colocation&#38;body=Geben%20Sie%20Ihre%20E-Mail%20ein%2C%20um%20den%20Link%20an%20sich%20selbst%20zu%20senden%2C%20oder%20die%20eines%20Kontakts%2C%20um%20die%20Website%20zu%20teilen%3A%0Ahttps%3A%2F%2Fdavidbabel.github.io%2Flocatif%2F" target="true" data-astro-cid-3lltiirq> <span class="de">🖥️ Sehen Sie auf einem Computer</span> </a><a class="es" href="mailto:?subject=Departamento%20Colocation&#38;body=Ingrese%20su%20correo%20electr%C3%B3nico%2C%20para%20enviarse%20el%20enlace%20a%20usted%20mismo%2C%20o%20el%20de%20un%20contacto%20para%20compartir%20el%20sitio%3A%0Ahttps%3A%2F%2Fdavidbabel.github.io%2Flocatif%2F" target="true" data-astro-cid-3lltiirq> <span class="es">🖥️ Ver en una computadora</span> </a><a class="it" href="mailto:?subject=Appartamento%20Colocation&#38;body=Inserisci%20la%20tua%20email%2C%20per%20inviare%20il%20link%20a%20te%20stesso%2C%20o%20quello%20di%20un%20contatto%20per%20condividere%20il%20sito%3A%0Ahttps%3A%2F%2Fdavidbabel.github.io%2Flocatif%2F" target="true" data-astro-cid-3lltiirq> <span class="it">🖥️ Visualizza sul computer</span> </a> </li>   <li class="admin-only" data-astro-cid-bkphkkal> <details data-menu="admin" data-astro-cid-bkphkkal> <summary class data-astro-cid-bkphkkal> <span class="fr">👑 Admin</span><span class="en"></span><span class="de"></span><span class="es"></span><span class="it"></span> </summary> <ul data-astro-cid-bkphkkal>  <li class="menu-item-admin-titres" data-astro-cid-3lltiirq> <a class="fr" href="/admin/titres" target data-astro-cid-3lltiirq> <span class="fr">⚙️ Générateur de titres</span> </a><a class="en" href="/admin/titres" target data-astro-cid-3lltiirq> <span class="en">⚙️ Title generator</span> </a><a class="de" href="/admin/titres" target data-astro-cid-3lltiirq> <span class="de">⚙️ Titelgenerator</span> </a><a class="es" href="/admin/titres" target data-astro-cid-3lltiirq> <span class="es">⚙️ Generador de títulos</span> </a><a class="it" href="/admin/titres" target data-astro-cid-3lltiirq> <span class="it">⚙️ Generatore di titoli</span> </a> </li>   <li class="menu-item-admin-prix" data-astro-cid-3lltiirq> <a class="fr" href="/admin/prix" target data-astro-cid-3lltiirq> <span class="fr">💰 Prix</span> </a><a class="en" href="/admin/prix" target data-astro-cid-3lltiirq> <span class="en">💰 Price</span> </a><a class="de" href="/admin/prix" target data-astro-cid-3lltiirq> <span class="de">💰 Preis</span> </a><a class="es" href="/admin/prix" target data-astro-cid-3lltiirq> <span class="es">💰 Precio</span> </a><a class="it" href="/admin/prix" target data-astro-cid-3lltiirq> <span class="it">💰 Prezzo</span> </a> </li>   <li class="menu-item-#clean_cache" data-astro-cid-3lltiirq> <a class="fr" href="#" data-action="#clean_cache" data-astro-cid-3lltiirq> <span class="fr">🔄 Réinitialiser le cache</span> </a><a class="en" href="#" data-action="#clean_cache" data-astro-cid-3lltiirq> <span class="en">🔄 Reset cache</span> </a><a class="de" href="#" data-action="#clean_cache" data-astro-cid-3lltiirq> <span class="de">🔄 Cache zurücksetzen</span> </a><a class="es" href="#" data-action="#clean_cache" data-astro-cid-3lltiirq> <span class="es">🔄 Restablecer caché</span> </a><a class="it" href="#" data-action="#clean_cache" data-astro-cid-3lltiirq> <span class="it">🔄 Ripristina cache</span> </a> </li>    </ul> </details> </li>   </ul> </div> <!-- Zone fixe pour le changeur de langue - parfaitement centrée --> <div class="flex-shrink-0 relative lang-container-wrapper" data-astro-cid-52d4wjy7> <!-- Ombre en haut pour indiquer le scroll --> <div class="absolute top-0 left-0 right-0 h-4 bg-gradient-to-b from-base-200/90 to-transparent pointer-events-none" data-astro-cid-52d4wjy7></div> <div class="bg-base-200/95 backdrop-blur-sm border-t border-base-300/50" data-astro-cid-52d4wjy7> <!-- Container pour centrer parfaitement les 3 drapeaux --> <div class="flex justify-center items-center py-2" data-astro-cid-52d4wjy7> <div id="lang-switcher" class="flex items-center justify-center w-full" data-astro-cid-uxhrh3b4> <!-- Container centré pour les drapeaux uniquement --> <div class="flex items-center justify-center" data-astro-cid-uxhrh3b4> <div id="main-flags" class="flex items-center" data-astro-cid-uxhrh3b4> <button aria-label="fr" data-lang="fr" class="btn btn-ghost p-2 rounded-md w-12 h-9" title="fr" type="button"> <img src="https://flagcdn.com/fr.svg" alt="fr" class="block big" data-astro-cid-54csbnpk>  </button> <button aria-label="en" data-lang="en" class="btn btn-ghost p-2 rounded-md w-12 h-9" title="en" type="button"> <img src="https://flagcdn.com/gb.svg" alt="en" class="block big" data-astro-cid-54csbnpk>  </button>  </div> <!-- Boutons (+) positionnés de manière absolue --> <div id="mobile-small-plus" class="md:hidden absolute right-2" data-astro-cid-uxhrh3b4></div> <div id="desktop-small-plus" class="hidden md:block absolute right-2" data-astro-cid-uxhrh3b4></div> </div> </div> <!-- Boutons cachés pour les cloner dans le dropdown dynamique --> <div class="hidden" id="hidden-dropdown-buttons" data-astro-cid-uxhrh3b4> <button data-lang="de" class="flex items-center justify-start space-x-2 px-2 py-1 hover:bg-base-200 rounded dropdown-lang-btn" type="button" data-astro-cid-uxhrh3b4> <img src="https://flagcdn.com/de.svg" alt="de" class="block medium" data-astro-cid-54csbnpk>  <span class="text-sm" data-astro-cid-uxhrh3b4>Deutsch</span> </button><button data-lang="es" class="flex items-center justify-start space-x-2 px-2 py-1 hover:bg-base-200 rounded dropdown-lang-btn" type="button" data-astro-cid-uxhrh3b4> <img src="https://flagcdn.com/es.svg" alt="es" class="block medium" data-astro-cid-54csbnpk>  <span class="text-sm" data-astro-cid-uxhrh3b4>Español</span> </button><button data-lang="it" class="flex items-center justify-start space-x-2 px-2 py-1 hover:bg-base-200 rounded dropdown-lang-btn" type="button" data-astro-cid-uxhrh3b4> <img src="https://flagcdn.com/it.svg" alt="it" class="block medium" data-astro-cid-54csbnpk>  <span class="text-sm" data-astro-cid-uxhrh3b4>Italiano</span> </button> </div> <script>(function(){const translations = {"fr":{"@":{"HomeFlatCard":{"flat":"Appartement"}},"lang":"Français","menu":{"admin":"👑 Admin","map":"🗺️ Carte","contact":"📞 Contact","tenants":"🛏️ Espace Locataire","steps":"🪜 Étapes pour louer","departure":"🚪 Je m'en vais !","documents":"📂 Dossier de location","flat_engelbreit":"🥨 Appartement Engelbreit","flat_romains":"🏛️ Appartement Romains","form":"🤚 Je postule","home":"🏠 Accueil","rentila":"🏠 Quittances sur Rentila","app-utiles":"📱 Applications utiles","keepOpen":"Garder ouvert","location":"📍 Localisation","overview":"🔍 Aperçu","photos":"📷 Photos","price":"💰 Prix","send_email":"🖥️ Ouvrir sur ordinateur &nbsp;&nbsp;&nbsp;↗️","titles":"⚙️ Générateur de titres","overview-engelbreit":"ℹ️ Engelbreit: Infos","overview-romains":"ℹ️ Romains: Infos","videos-engelbreit":"🎬 Engelbreit: Vidéos d'infos ","videos-romains":"🎬 Romains: Vidéos d'infos ","virtual_visit":"🎥 Visite virtuelle","reset_cache":"🔄 Réinitialiser le cache"},"pages":{"contact":{"title":"📞 Contact","intro":"Si c'est la première fois que tu cherches à louer un appartement dans une colocation, c'est normal d'être un peu perdu(e). N'hésites pas à me contacter si tu as des questions sur un appartement, une chambre, sur la ville de Strasbourg ou sur les démarches de location. Les conseils, c'est gratuit !","contact-infos":"Vous pouvez me contacter par email ou par téléphone, via SMS ou WhatsApp, pour toute question ou\npour organiser une visite de l'appartement.","email":"Email","phone":"Téléphone / WhatsApp","share_phone":"Je le partage par <i>email</i> avec plaisir."},"departure":{"title":"👋 Je m'en vais !","intro":"Toutes les bonnes choses ont une fin ! En location meublée, la période de préavis est de <b>un mois</b> à partir de la reception de ton avis de départ. De mon côté je m'engage à te répondre pour te faire économiser un courrier recommandé. Tu trouveras ici des modèles de lettres de départ à envoyer pour commencer ton préavis.","infos":"Tu peux télécharger un de ces documents, disponible en français ou en anglais, l'imprimer et le signer ou le signer numériquement et me le renvoyer par mail sur mon addresse :"},"documents":{"title":"Appartement Engelbreit"},"titles":{"title":"🏠 Générateur de titres"},"docs":{"intro":{"opening":"En France il y a deux moyens de trouver un chouette appartement dans une grande ville.","method1":"Avoir de la chance","method2":"Avoir un bon dossier de location","list_intro":"<b>Pourquoi ?</b> En France, la loi oblige les agences et propriétaires à vérifier les papiers et la solvabilité des locataires. Voilà donc la liste des documents attendus dans un dossier de location complet.","personal_note":"Personnellement, je ne fais <u>pas de visite</u> sans dossier de location minimum."},"footer":{"notes_title":"Notes:","missing_docs":"Même si il vous manque des documents, fournissez ceux que vous avez, ça sera toujours un avantage pour votre dossier.","watermark_info":"Vous pouvez mettre un filigrane de sécurité sur vos documents en utilisant cet","watermark_link_text":"outil du gouvernement","dossier_facile_info":"Vous pouvez également constituer votre dossier distribuable en ligne sur cet outil du gouvernement","dossier_facile_link":"https://dossier-facile.fr"},"no_specific_docs":"Aucun document spécifique requis pour ce statut","titles":{"mandatory":"Documents requis","specific":"Documents spécifiques requis"},"options":{"apprentice":"👷 Apprenti / Stagiaire / Petit boulot","employee":"💼 Employé","independent":"✊ Auto-entrepreneur / Indépendant","student":"👨‍🎓 Etudiant","unemployed":"🚶🏻‍♂️ Chômage"},"result":{"apprenticeship_contract":"➔ Convention de stage ou contrat d'apprentissage","contract":"➔ Contrat de travail","france_travail":"➔ Justificatif de revenu de France Travail (ex Pôle Emploi)","guarantor":"➔ Les informations du garant <br />\n- Une copie de la pièce d'identité du garant <br />\n- Les coordonnées mail et téléphone du garant <br />\n- Deux derniers bulletins de salaire et avis d'imposition du garant","home_insurance":"➔ L'attestation d'<a target=\"_blank\"\nhref=\"https://www.service-public.fr/particuliers/vosdroits/F21478\">\nassurance habitation\n</a> (après la signature du bail).","id":"➔ Une copie recto/verso de ta carte ID ou de ton passeport, et visa si pertinent (en photo ça suffit)","payslips":"➔ 3 derniers bulletins de salaire","quittance":"➔ Les quittances de loyer de ton logement précédent <br />\n(il suffit de demander à ton précédent propriétaire,\nou au pire un extrait de compte bancaire avec la trace du paiement)","residence_permit":"➔ Ton titre de séjour valide recto/verso (en photo ça suffit)","scholarship_certificate":"➔ Attestations de bourses","school_certificate":"➔ Certificat de scolarité","taxes":"➔ Ta dernière feuille d'imposition (si tu en as une)","urssaf":"➔ 2 Dernières déclarations URSSAF"},"title":"📂 Composer votre dossier de location"},"form":{"title":"Formulaire de demande"},"localisation":{"title":"Localisation Colocation","discover_strasbourg":"Découvrir Strasbourg","view_apartment_maps":"Voir l'appartement sur 🗺️ Google Maps","destination_from_apartment":"Destination depuis l'appartement","transports_title":"Transports","destinations":{"station":"Gare","university_main":"Fac centrale Principale","university_medicine":"Fac de médecine / Science Politiques","city_center":"Centre ville","supermarket":"Supermarché (Lidl)","supermarket_romains":"Supermarché (Lidl)","supermarket_engelbreit":"Supermarché (Grand Frais)","highway":"Autoroute"},"transports":{"bike":"Vélo","tram_walk":"Tram + 🚶🏻 marche","car":"Voiture"},"tram_info_title":"Info Tram","tram_info_station":"la station","tram_info_opening":"au pied de l'immeuble sera ouverte le","tram_info_date":"15 novembre 2025","view_route_maps":"Voir ce trajet sur 🗺️ Google Maps"},"pictures":{"title":"📷 Photos de l'appartement"},"home":{"title":"Accueil"},"visit":{"title-engel":"🎬 Visite Virtuelle Engelbreit","title-romains":"🎬 Visite Virtuelle Romains","disclaimer-price":"<b>Note</b>: Les prix mentionnés dans la vidéo peuvent ne plus être à jour.","navigation":{"description":"Cliquez sur les sections ci-dessous pour naviguer directement dans la vidéo :"}},"videos":{"title-engel":"🎬 Videos Engelbreit","title-romains":"🎬 Videos Romains","autonomous_arrival":"🔐 Arrivée autonome","poele_inox":"🍳 Utilisation poêles en inox","thermostat_usage":"🔥 Utilisation et réglage thermostats de chauffage","keys_usage":"🔑 Utilisation des clés / Exterieur de l'appartement","appliances_lights_counters":"Utilisation appareils / Lumières 💡 / Compteurs ⚡️💧"},"prices":{"details":{"agency_fees":"Frais d'agence:","agency_fees_explain":"Vous traitez en direct avec moi, aucun frais d'agence","apl":"Éligible APL ?","apl_explain":" aide au logement de la CAF","charges":"Charges:","charges_explain":"Comprend 💧 eau, ♨️ eau chaude, 🌡️ chauffage, 💡 électricité, et la 🌐         fibre internet.","cost":"💰 Prix","cost_monthly":"📆 Par mois:","cost_once":"☝️ Une fois / rendu au départ:","deposit":"Caution","deposit_alt":"(Dépôt de garantie)","deposit_explain":"Récupéré à la sortie, peut être payé en plusieurs fois","home_insurance":"Assurance habitation","home_insurance_explain":"Obligatoire pour toute location en {fr} France","housing_aid":"Éligible APL ?","housing_aid_explain":"Aide au logement de la CAF","peace_of_mind":"Paix de l'esprit:","peace_of_mind_explain":"Parce que ça compte, je m'occupe de tout pour rendre les choses simple pour vous","peace_of_mind_included":"inclue","rent":"Loyer:","solidarity_clause":"Clause de solidarité:","solidarity_clause_explain":"Vous n'êtes pas solidaire des autres locataires sur leur loyer","total":"Total:"},"intro":"Voici la liste de tous les frais liés à l'appartement.","intro_explain":"Ces frais seront les mêmes pour n'importe quelle location et sont donc importants à prendre en compte dans votre budget.","room":"🛏️ Chambre","room_choose":"Choisissez une chambre:","title":"💰 Prix des chambres pour l'appartement"},"steps":{"title":"🪜 Étapes pour louer une chambre","intro":"Voici la liste des étapes traditionnelles pour louer une chambre en France.","step_form":"Découvrir l'appartement et postuler","step_form_subtitle":"Pour mes appartements, toutes les informations nécessaires sont dispponibles dans <a href=\"/formulaire\">le formulaire</a>","step_contact":"Prise de contact pour programmer une visite","step_contact_subtitle":"<b>Note:</b> L'envoi <a href=\"/documents-dossier-de-location\">du dossier de location</a> est nécessaire <u>avant</u> d'organiser une visite.","step_visit":"Visite de l'appartement","step_visit_subtitle":"La visite peut être faite sur 🎥 <b>WhatsApp</b> ou 📍 <b>sur place</b>","step_reflection":"Délai de réflexion","step_reflection_subtitle":"De quelques jours <i>maximum</i>, pour finir les visites","step_choice":"Choix de la chambre et d'une date de début de location","step_choice_subtitle":"Si plusieurs chambres sont disponibles, une liste par ordre de préférence sera demandée","step_lease":"Signature du bail et de la caution solidaire par le garant","step_lease_subtitle":"Le bail est signé sur un outil en ligne <a href=\"https://www.rentila.com\" target=\"_blank\">Rentila</a>","step_insurance":"Fournir un justificatif d'assurance habitation","step_insurance_subtitle":"C'est obligatoire en France pour n'importe quelle location - <a href=\"https://www.service-public.fr/particuliers/vosdroits/F21478\" target=\"_blank\">plus d'infos ici</a>","step_payment":"Versement du premier loyer","step_payment_subtitle":"","step_deposit":"Versement du dépôt de garantie","step_deposit_subtitle":"Appelé parfois \"caution\", le dépôt de garantie peut aussi être versé en plusieurs fois","step_inventory":"État des lieux d'entrée","step_inventory_subtitle":"","step_keys":"Remise des clés","step_keys_subtitle":""}},"slug":{"map":"carte","apps":"applications-utiles","steps":"étapes-location","contact":"contacter","departure":"depart","documents":"documents-dossier-de-location","form":"formulaire","location":"localisation","pictures":"photos","prices":"prix","visit":"visite","rentila":"rentila","infos-romains":"infos-romains","infos-engelbreit":"infos-engelbreit","videos-romains":"vidéos-romains","videos-engelbreit":"vidéos-engelbreit","titres":"titres","@email_contact":"mailto:?subject=Appartement%20Colocation&body=Rentre%20ton%20email%2C%20pour%20t%27envoyer%20le%20lien%20%C3%A0%20toi%20m%C3%AAme%2C%20ou%20celui%20d%27un%20contact%20pour%20partager%20le%20site%20%3A%0Ahttps%3A%2F%2Fdavidbabel.github.io%2Flocatif%2F"},"rooms":{"cellier":"🍞 Cellier","cuisine":"🍽️ Cuisine","engelbreit-chambre-salon":"Chambre Sud","engelbreit-chambre-west":"Chambre Ouest","engelbreit-chambre-north":"Chambre Nord","engelbreit-chambre-south":"Grande Chambre Sud","romains-chambre-cellier":"Chambre Ouest","romains-chambre-cuisine":"Chambre Est","romains-chambre-grandeG":"Chambre Nord Est","romains-chambre-grandeD":"Chambre Nord Ouest","romains-chambre-balcon":"Chambre Ouest + Balcon","photos-engelbreit":"📸 Photos Engelbreit","photos-romains":"📸 Photos Romains","plan-2d":"🗺️ Plan 2D","salle-bain":"🛁 Salle de bain","salle-bain-1":"🛁 Salle de bain (1/2)","salle-douche":"🚿 Salle de douche (2/2)","salon-cuisine":"🛋️ Salon / 🍽️ Cuisine","salon-entree":"🛋️ Salon + Entrée","trajet-gare":"🚆 Trajet gare"}},"en":{"@":{"HomeFlatCard":{"flat":"Apartment"}},"lang":"English","menu":{"contact":"📞 Contact","departure":"🚪 I'm going!","documents":"📄 Requested Documents","flat_engelbreit":"🥨 Flat Engelbreit","flat_romains":"🏛️ Flat Romains","form":"🤚 I Apply","home":"🏠 Home","keepOpen":"Keep open","location":"📍 Location","overview":"🔍 Overview","photos":"📷 Photos","price":"💰 Price","send_email":"🖥️ See on a computer","titles":"⚙️ Title generator","videos":"🎬 Videos","virtual_visit":"🎥 Virtual tour","reset_cache":"🔄 Reset cache"},"pages":{"contact":{"title":"📞 Contact","intro":"If this is the first time you're looking to rent an apartment in a shared flat, it's normal to be a little lost. Don't hesitate to contact me if you have questions about the apartment, the city or the rental process.","contact-infos":"You can contact me by email or phone for any question or\nto organize a visit of the apartment.","email":"Email","phone":"Phone","share_phone":"I'll gladly share it by email."},"departure":{"title":"👋 I'm leaving!","intro":"All good things must come to an end! For furnished rentals, the notice period is <b>one month</b> from the receipt of your departure notice. On my side, I commit to responding to you to save you from sending a registered letter. You'll find here departure letter templates to send to start your notice period.","infos":"You can download one of these documents, available in French or English, print it and sign it or sign it digitally and send it back to me by email at my address:"},"docs":{"intro":"Here's the list of documents you'll need in your rental file. <br />It's\nokay if you don't have everything, but anything you can provide is bound to\nbe an advantage for your file.<br />\n<i>These documents will be required and asked for any rentals in France</i>","options":{"apprentice":"👷 Apprentice / trainee / Small job","employee":"💼 Employee","independent":"✊ Auto-entrepreneur / independent","student":"👨‍🎓 Student","unemployed":"🚶🏻‍♂️ Unemployment"},"result":{"apprenticeship_contract":"➔ Internship agreement or apprenticeship contract","contract":"➔ Employment contract","france_travail":"➔ Proof of France Work (ex Pôle Emploi)","guarantor":"➔ Guarantor information <br />  \n- a copy of the guarantor's identity document <br />\n- Mail and telephone contact details of the guarantor <br />\n- two last salary slips and guarantor tax notice","home_insurance":"➔ The certificate of <a target=\"_blank\"\nhref = \"https://www.service-public.fr/particuliers/vosdroits/F21478\">\nHome insurance\n</a> (after signing the lease).","id":"➔ A recto/back copy of your ID card or passport (in photo is enough)","payslips":"➔ 3 last salary bulletins","quittance":"➔ Rent receipts from your previous accommodation <br />\n(just ask your previous owner,\nor at worst a bank account extract with the trace of payment)","residence_permit":"➔ Your valid residence permit/back (in photo is enough)","scholarship_certificate":"➔ Scholarship certificates","school_certificate":"➔ Tuition certificate","taxes":"➔ Your last tax sheet (if you have one)","urssaf":"➔ 2 last URSSAF declarations"},"title":"Documents to provide for rental"},"home":{},"localisation":{"title":"Shared Apartment Location","discover_strasbourg":"Discover Strasbourg","view_apartment_maps":"View apartment on 🗺️ Google Maps","destination_from_apartment":"Destination from apartment","transports_title":"Transports","destinations":{"station":"Train Station","university_main":"Main University Campus","university_medicine":"Medical Faculty / Science Po","city_center":"City Center","supermarket":"Supermarket (Lidl)","supermarket_romains":"Supermarket (Lidl)","supermarket_engelbreit":"Supermarket (Grand Frais)","highway":"Highway"},"transports":{"bike":"Bike","tram_walk":"Tram + 🚶🏻 walk","car":"Car"},"tram_info_title":"Tram Info","tram_info_station":"the station","tram_info_opening":"at the foot of the building will open on","tram_info_date":"November 15, 2025","view_route_maps":"View this route on 🗺️ Google Maps"},"visit":{"title-engel":"🎬 Virtual Tour Engelbreit","title-romains":"🎬 Virtual Tour Romains","navigation":{"description":"Click on the sections below to navigate directly in the video:"}},"videos":{"title-engel":"🎬 Videos Engelbreit","title-romains":"🎬 Videos Romains","autonomous_arrival":"🔐 Autonomous arrival","thermostat_usage":"🔥 Usage and setting of heating thermostats","keys_usage":"🔑 Key usage / Outside the apartment","appliances_lights_counters":"Appliance usage / Lights 💡 / Meters ⚡️💧"},"prices":{"details":{"agency_fees":"Agency fees:","agency_fees_explain":"you deal directly with me, no agency fees","apl":"Eligible APL?","apl_explain":"Housing assistance from CAF","charges":"Charges:","charges_explain":"Includes 💧 water, ♨️ hot water, 🌡️ heating, 💡 electricity, and the 🌐 Internet fiber.","cost":"💰 Price","cost_monthly":"📆 per month:","cost_once":"☝️ Once / returned upon departure:","deposit":"Deposit","deposit_alt":" ","deposit_explain":"recovered at the exit, can be paid in several times","home_insurance":"Home insurance","home_insurance_explain":"Compulsory for any rental in {fr} France","housing_aid":"Eligible for CAF aid?","housing_aid_explain":"Housing assistance from CAF","peace_of_mind":"Peace of mind:","peace_of_mind_explain":"Because it matters, I take care of everything to make things simple for you","peace_of_mind_included":"included","rent":"Rent:","solidarity_clause":"Solidarity clause:","solidarity_clause_explain":"You are not in solidarity with other tenants on their rent","total":"Total:"},"intro":"Here is the list of all the costs related to the apartment. <br />\n<i>These costs will be the same for any rental and are therefore\nimportant to take into account in your budget. </i>","room":"🛏️ Room","room_choose":"Choose a room:","title":"💰 Room price for the apartment"},"steps":{"title":"🪜 Steps to rent a room","intro":"Here is the list of traditional steps to rent a room in France.","step_form":"Form to discover the apartment and apply","step_contact":"Contact to schedule a visit","step_visit":"Apartment visit, choice of room","step_reflection":"Reflection period of up to a few days","step_choice":"Choice of a room and a rental start date","step_choice_multiple":"If there are several rooms, preference ranking","step_lease":"Signing of the lease (online) and the joint guarantee","step_insurance":"Provide proof of home insurance","step_payment":"Payment of the first rent and charges","step_deposit":"Payment of the security deposit (sometimes called \"caution\")","step_deposit_note":"Note: it can be paid in several installments","step_inventory":"Move-in inventory check and equipment inventory","step_keys":"Key handover"}},"slug":{"contact":"contact","departure":"departure","documents":"rental-file-documents","form":"form","location":"location","pictures":"pictures","prices":"price","visit":"visit","videos":"videos","steps":"rental-steps","@email_contact":"mailto:?subject=Apartment%20Colocation&body=Enter%20your%20email%2C%20to%20send%20the%20link%20to%20yourself%2C%20or%20that%20of%20a%20contact%20to%20share%20the%20site%3A%0Ahttps%3A%2F%2Fdavidbabel.github.io%2Flocatif%2F"},"rooms":{"cellier":"🍞 Cellier","cuisine":"🍽️ Kitchen","engelbreit-chambre-salon":"Living Room Bedroom","engelbreit-chambre-west":"West Bedroom","engelbreit-chambre-north":"North Bedroom","engelbreit-chambre-south":"Large South Bedroom","romains-chambre-cellier":"Cellier Bedroom","romains-chambre-cuisine":"Kitchen Bedroom","romains-chambre-grandeG":"Left Bedroom","romains-chambre-grandeD":"Right Bedroom","romains-chambre-balcon":"Balcony Bedroom","photos-engelbreit":"📸 Engelbreit Photos","photos-romains":"📸 Romains Photos","plan-2d":"🗺️ 2D Plan","salle-bain":"🛁 Bathroom","salle-bain-1":"🛁 Bathroom (1/2)","salle-douche":"🚿 Shower Room (2/2)","salon-cuisine":"🛋️ Living Room / 🍽️ Kitchen","salon-entree":"🛋️ Living Room + Entrance","trajet-gare":"🚆 Station Route"}},"de":{"@":{"HomeFlatCard":{"flat":"Wohnung"}},"lang":"Deutsch","menu":{"contact":"📞 Kontakt","departure":"🚪 Ich gehe!","documents":"📄 Angeforderte Dokumente","flat_engelbreit":"🥨 Wohnung Engelbreit","flat_romains":"🏛️ Wohnung Romains","form":"🤚 Ich bewerbe mich","home":"🏠 Startseite","keepOpen":"Offen bleiben","location":"📍 Ort","overview":"🔍 Übersicht","photos":"📷 Fotos","price":"💰 Preis","send_email":"🖥️ Sehen Sie auf einem Computer","titles":"⚙️ Titelgenerator","videos":"🎬 Videos","virtual_visit":"🎥 Virtueller Besuch","reset_cache":"🔄 Cache zurücksetzen"},"pages":{"contact":{"title":"📞 Kontakt","intro":"Wenn Sie zum ersten Mal eine Wohnung in einer Wohngemeinschaft mieten möchten, ist es normal, sich etwas verloren zu fühlen. Zögern Sie nicht, mich zu kontaktieren, wenn Sie Fragen zur Wohnung, zur Stadt oder zum Mietprozess haben.","contact-infos":"Sie können mich per E-Mail oder Telefon für alle Fragen kontaktieren oder\num eine Besichtigung der Wohnung zu organisieren.","email":"E-Mail","phone":"Telefon","share_phone":"Ich teile es gerne per E-Mail mit."},"departure":{"title":"👋 Ich gehe!","intro":"Alles Gute hat ein Ende! Bei möblierten Mietverhältnissen beträgt die Kündigungsfrist <b>einen Monat</b> ab Erhalt Ihrer Kündigung. Von meiner Seite verpflichte ich mich, Ihnen zu antworten, um Ihnen einen Einschreibebrief zu ersparen. Hier finden Sie Vorlagen für Kündigungsschreiben, die Sie senden können, um Ihre Kündigungsfrist zu beginnen.","infos":"Sie können eines dieser Dokumente, verfügbar auf Französisch oder Englisch, herunterladen, ausdrucken und unterschreiben oder digital unterschreiben und mir per E-Mail an meine Adresse zurücksenden:"},"docs":{"intro":"Hier ist die Liste der Dokumente, die in Ihrer Mietdatei erwartet werden. <br />\nDies ist normal, wenn Sie nicht alles haben, aber alles, was Sie bereitstellen können\nUnweigerlich ein Vorteil für Ihre Datei. <br />\n<i> Diese Dokumente werden für jeden ohnehin angefordert\nMiete in Frankreich </i>","options":{"apprentice":"👷 Lehrling / Auszubildende / Kleiner Job","employee":"💼 Mitarbeiter","independent":"✊ Auto-Unternehmer / Independent","student":"👨‍🎓 Student","unemployed":"🚶🏻‍ Eute Arbeitslosigkeit"},"result":{"apprenticeship_contract":"➔ Praktikumsvereinbarung oder Ausbildungsvertrag","contract":"➔ Arbeitsvertrag","france_travail":"➔ Nachweis der Frankreicharbeit (Ex pôle emploi)","guarantor":"➔ Garantieinformationen <br />\n- eine Kopie des Identitätsdokuments des Garanters <br />\n- Mail- und Telefonkontaktdaten des Garants <br />\n- Zwei letzte Gehaltsausrutschen und Garantiesteuerkündigung","home_insurance":"➔ Das Zertifikat von <a target=\"_blank\"\nhref = \"https://www.service-public.fr/particuliers/vosdroits/F21478\">\nHausversicherung\n</a> (nach der Unterzeichnung des Mietvertrags).","id":"➔ Eine Recto/Back -Kopie Ihrer ID -Karte oder Ihres Reisepasses (auf dem Foto reicht aus)","payslips":"➔ 3 Letzte Gehaltsbulletins","quittance":"➔ Mieten Sie Einnahmen aus Ihrer vorherigen Unterkunft <br />\n(Fragen Sie einfach Ihren Vorbesitzer,\noder im schlimmsten Fall ein Bankkontoauszug mit der Spur der Zahlung)","residence_permit":"➔ Ihre gültige Aufenthaltserlaubnis/zurück (auf dem Foto reicht aus)","scholarship_certificate":"➔ Stipendienzertifikate","school_certificate":"➔ Studiengebührenzertifikat","taxes":"➔ Ihr letztes Steuerblatt (wenn Sie eines haben)","urssaf":"➔ 2 Letzte Urssaf -Deklarationen"},"title":"Dokumente zur Vermietung"},"home":{},"localisation":{"title":"Standort der Wohngemeinschaft","discover_strasbourg":"Straßburg entdecken","view_apartment_maps":"Wohnung auf 🗺️ Google Maps anzeigen","destination_from_apartment":"Ziel von der Wohnung","transports_title":"Verkehrsmittel","destinations":{"station":"Bahnhof","university_main":"Hauptuni-Campus","university_medicine":"Medizinische Fakultät / Science Po","city_center":"Stadtzentrum","supermarket":"Supermarkt (Lidl)","supermarket_romains":"Supermarkt (Lidl)","supermarket_engelbreit":"Supermarkt (Grand Frais)","highway":"Autobahn"},"transports":{"bike":"Fahrrad","tram_walk":"Straßenbahn + 🚶🏻 zu Fuß","car":"Auto"},"tram_info_title":"Straßenbahn Info","tram_info_station":"die Station","tram_info_opening":"am Fuße des Gebäudes wird geöffnet am","tram_info_date":"15. November 2025","view_route_maps":"Diese Route auf 🗺️ Google Maps anzeigen"},"visit":{"title-engel":"🎬 Virtueller Rundgang Engelbreit","title-romains":"🎬 Virtueller Rundgang Romains","navigation":{"description":"Klicken Sie auf die folgenden Abschnitte, um direkt im Video zu navigieren:"}},"videos":{"title-engel":"🎬 Videos Engelbreit","title-romains":"🎬 Videos Romains","autonomous_arrival":"🔐 Autonome Ankunft","thermostat_usage":"🔥 Verwendung und Einstellung der Heizungsthermostate","keys_usage":"🔑 Schlüsselverwendung / Außerhalb der Wohnung","appliances_lights_counters":"Geräteverwendung / Lichter 💡 / Zähler ⚡️💧"},"prices":{"details":{"agency_fees":"Agenturgebühren:","agency_fees_explain":"Sie verhandeln direkt mit mir, keine Agenturgebühren","apl":"Berechtigte APL?","apl_explain":"Wohnungsunterstützung aus CAF","charges":"Gebühren:","charges_explain":"Beinhaltet 💧 Wasser, ♨️ heißes Wasser, 🌡️ Heizung, 💡 Strom und 🌐 Internetfaser.","cost":"💰 Preis","cost_monthly":"📆 pro Monat:","cost_once":"☝️ Einmal / bei Auszug zurückgegeben:","deposit":"Kaution","deposit_alt":" ","deposit_explain":"An der Aussteigung erholt, kann mehrmals bezahlt werden","home_insurance":"Hausversicherung","home_insurance_explain":"Obligatorisch für jede Vermietung in {fr} Frankreich","housing_aid":"Berechtigt für CAF-Hilfe?","housing_aid_explain":"Wohnbeihilfe der CAF","peace_of_mind":"Seelenfrieden:","peace_of_mind_explain":"Weil es wichtig ist, kümmere ich mich um alles, um die Dinge für Sie einfach zu machen","peace_of_mind_included":"enthalten","rent":"Mieten:","solidarity_clause":"Solidaritätsklausel:","solidarity_clause_explain":"Sie sind nicht solidarisch mit anderen Mietern in ihrer Miete","total":"Gesamt:"},"intro":"Hier ist die Liste aller Kosten für die Wohnung. <br />\n<i>Diese Kosten werden für jede Vermietung gleich sein und sind deshalb daher\nWichtig ist, in Ihrem Budget zu berücksichtigen. </i>","room":"🛏️ Zimmer","room_choose":"Wählen Sie einen Raum:","title":"💰 Zimmerpreis für die Wohnung"},"steps":{"title":"🪜 Schritte zur Zimmermiete","intro":"Hier ist die Liste der traditionellen Schritte zur Zimmermiete in Frankreich.","step_form":"Formular zur Entdeckung der Wohnung und Bewerbung","step_contact":"Kontaktaufnahme zur Terminplanung einer Besichtigung","step_visit":"Wohnungsbesichtigung, Zimmerwahl","step_reflection":"Bedenkzeit von höchstens wenigen Tagen","step_choice":"Wahl eines Zimmers und eines Mietbeginns","step_choice_multiple":"Bei mehreren Zimmern, Rangfolge der Präferenzen","step_lease":"Unterzeichnung des Mietvertrags (online) und der Bürgschaft","step_insurance":"Nachweis einer Hausratversicherung erbringen","step_payment":"Zahlung der ersten Miete und Nebenkosten","step_deposit":"Zahlung der Kaution (manchmal \"Bürgschaft\" genannt)","step_deposit_note":"Hinweis: kann in mehreren Raten gezahlt werden","step_inventory":"Einzugsprotokoll und Inventar der Ausstattung","step_keys":"Schlüsselübergabe"}},"slug":{"contact":"kontakt","departure":"abfahrt","documents":"mietdateidokumente","form":"bilden","location":"standort","pictures":"Fotos","prices":"preis","visit":"besuchen","videos":"videos","steps":"mietschritte","@email_contact":"mailto:?subject=Wohnung%20Colocation&body=Geben%20Sie%20Ihre%20E-Mail%20ein%2C%20um%20den%20Link%20an%20sich%20selbst%20zu%20senden%2C%20oder%20die%20eines%20Kontakts%2C%20um%20die%20Website%20zu%20teilen%3A%0Ahttps%3A%2F%2Fdavidbabel.github.io%2Flocatif%2F"},"rooms":{"cellier":"🍞 Cellier","cuisine":"🍽️ Küche","engelbreit-chambre-salon":"Salon Zimmer","engelbreit-chambre-west":"Westzimmer","engelbreit-chambre-north":"Nordzimmer","engelbreit-chambre-south":"Großes Südzimmer","romains-chambre-cellier":"Cellier Zimmer","romains-chambre-cuisine":"Küchenzimmer","romains-chambre-grandeG":"Linkes Zimmer","romains-chambre-grandeD":"Rechtes Zimmer","romains-chambre-balcon":"Balkonzimmer","photos-engelbreit":"📸 Engelbreit Fotos","photos-romains":"📸 Romains Fotos","plan-2d":"🗺️ 2D-Plan","salle-bain":"🛁 Badezimmer","salle-bain-1":"🛁 Badezimmer (1/2)","salle-douche":"🚿 Duschbad (2/2)","salon-cuisine":"🛋️ Salon / 🍽️ Küche","salon-entree":"🛋️ Salon + Eingang","trajet-gare":"🚆 Bahnhofsweg"}},"es":{"@":{"HomeFlatCard":{"flat":"Departamento"}},"lang":"Español","menu":{"contact":"📞 Contacto","departure":"🚪 ¡Voy!","documents":"📄 Documentos solicitados","flat_engelbreit":"🥨 Departamento Engelbreit","flat_romains":"🏛️ Departamento Romains","form":"🤚 Me postulo","home":"🏠 Inicio","keepOpen":"Estar abierto","location":"📍 Ubicación","overview":"📌 Descripción general","photos":"📷 Fotos","price":"💰 Precio","send_email":"🖥️ Ver en una computadora","titles":"⚙️ Generador de títulos","videos":"🎬 Videos","virtual_visit":"🎥 Visita virtual","reset_cache":"🔄 Restablecer caché"},"pages":{"contact":{"title":"📞 Contacto","intro":"Si es la primera vez que buscas alquilar un apartamento en una habitación compartida, es normal sentirse un poco perdido. No dudes en contactarme si tienes preguntas sobre el apartamento, la ciudad o el proceso de alquiler.","contact-infos":"Puedes contactarme por email o teléfono para cualquier pregunta o\npara organizar una visita del apartamento.","email":"Email","phone":"Teléfono","share_phone":"Lo comparto por email con mucho gusto."},"departure":{"title":"👋 ¡Me voy!","intro":"¡Todas las cosas buenas tienen un final! En alquiler amueblado, el período de aviso es de <b>un mes</b> a partir de la recepción de tu aviso de salida. Por mi parte, me comprometo a responderte para ahorrarte una carta certificada. Aquí encontrarás modelos de cartas de salida para enviar para comenzar tu período de aviso.","infos":"Puedes descargar uno de estos documentos, disponible en francés o inglés, imprimirlo y firmarlo o firmarlo digitalmente y devolvérmelo por email a mi dirección:"},"docs":{"intro":"Aquí está la lista de documentos esperados en su archivo de alquiler. <br />\nEsto es normal si no tiene todo, pero todo lo que puede proporcionar será\nInevitablemente una ventaja para su archivo. <br />\n<i> Estos documentos se solicitarán de todos modos para cualquier\nAlquiler en Francia </i>","options":{"apprentice":"👷 Aprendiz / aprendiz / pequeño trabajo","employee":"💼 Empleado","independent":"✊ Auto-In-Empreneur / Independent","student":"👨‍🎓 Estudiante","unemployed":"🚶🏻‍️ Desempleo"},"result":{"apprenticeship_contract":"➔ Acuerdo de prácticas o contrato de aprendizaje","contract":"➔ Contrato de empleo","france_travail":"➔ Prueba de Francia Trabajo (ex Pôle Emploi)","guarantor":"➔ Información del garante <br />\n- Una copia del documento de identidad del garante <br />\n- Los detalles de contacto de correo y teléfono del garante <br />\n- Dos últimos boletines de salario y aviso de impuestos garante","home_insurance":"➔ El certificado de <a target=\"_blank\"\nhref = \"https://www.service-public.fr/particuliers/vosdroits/F21478\">\nSeguro de hogar\n</a> (después de firmar el arrendamiento).","id":"➔ Una copia recto/verso de su tarjeta de identificación o pasaporte (en foto es suficiente)","payslips":"➔ 3 últimos boletines de salario","quittance":"➔ Recibos de alquiler de su alojamiento anterior <br />\n(simplemente solicite a su propietario anterior,\no en el peor de los casos, un extracto de cuenta bancaria con el rastro de pago)","residence_permit":"➔ Su permiso de residencia / espalda válido (en foto es suficiente)","scholarship_certificate":"➔ Certificados de becas","school_certificate":"➔ Certificado de matrícula","taxes":"➔ Su última hoja de impuestos (si tiene una)","urssaf":"➔ 2 últimas declaraciones URSSAF"},"title":"Documentos que proporcionar para el alquiler"},"home":{},"localisation":{"title":"Ubicación compartida del apartamento","discover_strasbourg":"Descubre Estrasburgo","view_apartment_maps":"Ver apartamento en 🗺️ Google Maps","destination_from_apartment":"Destino desde el apartamento","transports_title":"Transportes","destinations":{"station":"Estación de tren","university_main":"Campus universitario principal","university_medicine":"Facultad médica / Science Po","city_center":"Centro de la ciudad","supermarket":"Supermercado (Lidl)","supermarket_romains":"Supermercado (Lidl)","supermarket_engelbreit":"Supermercado (Grand Frais)","highway":"Autopista"},"transports":{"bike":"Bicicleta","tram_walk":"Tram + 🚶🏻 caminar","car":"Carro"},"tram_info_title":"Información del tranvía","tram_info_station":"la estación","tram_info_opening":"al pie del edificio se abrirá el","tram_info_date":"15 de noviembre de 2025","view_route_maps":"Ver esta ruta en 🗺️ Google Maps"},"visit":{"title-engel":"🎬 Tour Virtual Engelbreit","title-romains":"🎬 Tour Virtual Romains","navigation":{"description":"Haga clic en las secciones a continuación para navegar directamente en el video:"}},"videos":{"title-engel":"🎬 Videos Engelbreit","title-romains":"🎬 Videos Romains","autonomous_arrival":"🔐 Llegada autónoma","thermostat_usage":"🔥 Uso y configuración de termostatos de calefacción","keys_usage":"🔑 Uso de llaves / Fuera del apartamento","appliances_lights_counters":"Uso de aparatos / Luces 💡 / Medidores ⚡️💧"},"prices":{"details":{"agency_fees":"Honorarios de agencia:","agency_fees_explain":"usted trata directamente conmigo, sin honorarios de agencia","apl":"¿APL elegible?","apl_explain":"Asistencia de vivienda de CAF","charges":"Cargos:","charges_explain":"Incluye 💧 agua, ♨️ agua caliente, 🌡️ calefacción, 💡 electricidad y la fibra de Internet 🌐.","cost":"💰 Precio","cost_monthly":"📆 por mes:","cost_once":"☝️ Una vez / devuelto a la salida:","deposit":"Depósito","deposit_alt":" ","deposit_explain":"recuperado en la salida, se puede pagar en varias veces","home_insurance":"Seguro de hogar","home_insurance_explain":"Obligatorio para cualquier alquiler en {fr} Francia","housing_aid":"¿Elegible para ayuda CAF?","housing_aid_explain":"Ayuda de vivienda de la CAF","peace_of_mind":"Tranquilidad:","peace_of_mind_explain":"Porque importa, me encargo de todo para hacer las cosas simples para ti","peace_of_mind_included":"incluido","rent":"Alquiler:","solidarity_clause":"Cláusula de solidaridad:","solidarity_clause_explain":"No estás en solidaridad con otros inquilinos en su alquiler","total":"Total:"},"intro":"Aquí está la lista de todos los costos relacionados con el apartamento. <br />\n<i>estos costos serán los mismos para cualquier alquiler y, por lo tanto, son\nimportante tener en cuenta en su presupuesto. </i>","room":"🛏️ Habitación","room_choose":"Elija una habitación:","title":"💰 Precio de la habitación para el apartamento"},"steps":{"title":"🪜 Pasos para alquilar una habitación","intro":"Aquí está la lista de pasos tradicionales para alquilar una habitación en Francia.","step_form":"Formulario para descubrir el apartamento y aplicar","step_contact":"Contacto para programar una visita","step_visit":"Visita del apartamento, elección de habitación","step_reflection":"Período de reflexión de máximo unos días","step_choice":"Elección de una habitación y fecha de inicio del alquiler","step_choice_multiple":"Si hay varias habitaciones, ranking de preferencias","step_lease":"Firma del contrato de arrendamiento (en línea) y garantía solidaria","step_insurance":"Proporcionar prueba de seguro de hogar","step_payment":"Pago del primer alquiler y gastos","step_deposit":"Pago del depósito de seguridad (a veces llamado \"caución\")","step_deposit_note":"Nota: se puede pagar en varias cuotas","step_inventory":"Inventario de entrada y equipamiento","step_keys":"Entrega de llaves"}},"slug":{"contact":"contacto","departure":"partida","documents":"documentos-del-archivo-de-alquiler","form":"forma","location":"ubicacion","pictures":"fotos","prices":"precio","visit":"visita","videos":"videos","steps":"pasos-alquiler","@email_contact":"mailto:?subject=Departamento%20Colocation&body=Ingrese%20su%20correo%20electr%C3%B3nico%2C%20para%20enviarse%20el%20enlace%20a%20usted%20mismo%2C%20o%20el%20de%20un%20contacto%20para%20compartir%20el%20sitio%3A%0Ahttps%3A%2F%2Fdavidbabel.github.io%2Flocatif%2F"},"rooms":{"cellier":"🍞 Cellier","cuisine":"🍽️ Cocina","engelbreit-chambre-salon":"Habitación Salón","engelbreit-chambre-west":"Habitación Oeste","engelbreit-chambre-north":"Habitación Norte","engelbreit-chambre-south":"Gran Habitación Sur","romains-chambre-cellier":"Habitación Cellier","romains-chambre-cuisine":"Habitación Cocina","romains-chambre-grandeG":"Habitación Izquierda","romains-chambre-grandeD":"Habitación Derecha","romains-chambre-balcon":"Habitación Balcón","photos-engelbreit":"📸 Fotos Engelbreit","photos-romains":"📸 Fotos Romains","plan-2d":"🗺️ Plan 2D","salle-bain":"🛁 Baño","salle-bain-1":"🛁 Baño (1/2)","salle-douche":"🚿 Sala de ducha (2/2)","salon-cuisine":"🛋️ Salón / 🍽️ Cocina","salon-entree":"🛋️ Salón + Entrada","trajet-gare":"🚆 Ruta de la estación"}},"it":{"@":{"HomeFlatCard":{"flat":"Appartamento"}},"lang":"Italiano","menu":{"contact":"📞 Contatti","departure":"🚪 Me ne vado!","documents":"📄 Documenti richiesti","flat_engelbreit":"🥨 Appartamento Engelbreit","flat_romains":"🏛️ Appartamento Romains","form":"🤚 Faccio domanda","home":"🏠 Home","keepOpen":"Tieniti aperto","location":"📍 Localizzazione","overview":"🔍 Panoramica","photos":"📷 Foto","price":"💰 Prezzo","send_email":"🖥️ Visualizza sul computer","titles":"⚙️ Generatore di titoli","videos":"🎬 Video","virtual_visit":"🎥 Visita virtuale","reset_cache":"🔄 Ripristina cache"},"pages":{"contact":{"title":"📞 Contatti","intro":"Se è la prima volta che cerchi di affittare un appartamento in una condivisione, è normale sentirsi un po' persi. Non esitare a contattarmi se hai domande sull'appartamento, sulla città o sul processo di locazione.","contact-infos":"Puoi contattarmi per email o telefono per qualsiasi domanda o\nper organizzare una visita dell'appartamento.","email":"Email","phone":"Telefono","share_phone":"Lo condivido volentieri per email."},"departure":{"title":"👋 Me ne vado!","intro":"Tutte le cose belle hanno una fine! In locazione arredata, il periodo di preavviso è di <b>un mese</b> dal ricevimento del tuo avviso di partenza. Dal mio lato mi impegno a risponderti per farti risparmiare una raccomandata. Troverai qui dei modelli di lettere di partenza da inviare per iniziare il tuo preavviso.","infos":"Puoi scaricare uno di questi documenti, disponibile in francese o inglese, stamparlo e firmarlo o firmarlo digitalmente e rispedirmelo per email al mio indirizzo:"},"docs":{"intro":"Ecco l'elenco dei documenti richiesti per il tuo dossier di locazione.<br />\nÈ normale che tu non ne abbia tutti, ma tutto ciò che potrai fornire sarà\nsicuramente un vantaggio per il tuo dossier.<br />\n<i>Questi documenti ti saranno comunque richiesti per qualsiasi\nlocazione in Francia</i>","options":{"apprentice":"👷 Apprendista / Stagista / Lavoro part-time","employee":"💼 Dipendente","independent":"✊ Auto-impiegato / Indipendente","student":"👨‍🎓 Studente","unemployed":"🚶🏻‍♂️ Disoccupazione"},"result":{"apprenticeship_contract":"➔ Accordo di tirocinio o contratto di apprendistato","contract":"➔ Contratto di lavoro","france_travail":"➔ Prova di France Travail (ex Pôle Emploi)","guarantor":"➔ Informazioni del garante <br />\n- Una copia del documento d'identità del garante <br />\n- Contatti email e telefonici del garante <br />\n- Ultime due buste paga e avviso fiscale del garante","home_insurance":"➔ Il certificato di <a target=\"_blank\"\nhref=\"https://www.service-public.fr/particuliers/vosdroits/F21478\">\nassicurazione casa\n</a> (dopo la firma del contratto).","id":"➔ Una copia fronte/retro della tua carta d'identità o passaporto (una foto è sufficiente)","payslips":"➔ 3 ultime buste paga","quittance":"➔ Ricevute di affitto del tuo precedente alloggio <br />\n(basta chiedere al tuo precedente proprietario,\no nel peggiore dei casi un estratto conto bancario con la traccia del pagamento)","residence_permit":"➔ Il tuo permesso di soggiorno valido fronte/retro (una foto è sufficiente)","scholarship_certificate":"➔ Certificati di borsa di studio","school_certificate":"➔ Certificato di iscrizione","taxes":"➔ La tua ultima dichiarazione dei redditi (se ne hai una)","urssaf":"➔ 2 ultime dichiarazioni URSSAF"},"title":"Documenti da fornire per la locazione"},"home":{},"localisation":{"title":"Localizzazione Condivisione Appartamento","discover_strasbourg":"Scopri Strasburgo","view_apartment_maps":"Visualizza appartamento su 🗺️ Google Maps","destination_from_apartment":"Destinazione dall'appartamento","transports_title":"Trasporti","destinations":{"station":"Stazione","university_main":"Campus universitario principale","university_medicine":"Facoltà di medicina / Science Po","city_center":"Centro città","supermarket":"Supermercato (Lidl)","supermarket_romains":"Supermercato (Lidl)","supermarket_engelbreit":"Supermercato (Grand Frais)","highway":"Autostrada"},"transports":{"bike":"Bicicletta","tram_walk":"Tram + 🚶🏻 cammino","car":"Auto"},"tram_info_title":"Info Tram","tram_info_station":"la stazione","tram_info_opening":"ai piedi dell'edificio aprirà il","tram_info_date":"15 novembre 2025","view_route_maps":"Visualizza questo percorso su 🗺️ Google Maps"},"visit":{"title-engel":"🎬 Tour Virtuale Engelbreit","title-romains":"🎬 Tour Virtuale Romains","navigation":{"description":"Clicca sulle sezioni qui sotto per navigare direttamente nel video:"}},"videos":{"title-engel":"🎬 Video Engelbreit","title-romains":"🎬 Video Romains","autonomous_arrival":"🔐 Arrivo autonomo","thermostat_usage":"🔥 Uso e impostazione termostati riscaldamento","keys_usage":"🔑 Uso delle chiavi / Esterno dell'appartamento","appliances_lights_counters":"Uso elettrodomestici / Luci 💡 / Contatori ⚡️💧"},"prices":{"details":{"agency_fees":"Costi di agenzia:","agency_fees_explain":"tratti direttamente con me, nessun costo di agenzia","apl":"Eligibile APL?","apl_explain":"Aiuto alloggio dalla CAF","charges":"Spese:","charges_explain":"include 💧 acqua, ♨️ acqua calda, 🌡️ riscaldamento, 💡 elettricità, e la fibra 🌐 internet.","cost":"💰 Prezzo","cost_monthly":"📆 al mese:","cost_once":"☝️ Una volta / restituito alla partenza:","deposit":"Cauzione","deposit_alt":" ","deposit_explain":"recuperata all'uscita, può essere pagata in più volte","home_insurance":"Assicurazione casa","home_insurance_explain":"Obbligatoria per qualsiasi affitto in {fr} Francia","housing_aid":"Idoneo per l'aiuto CAF?","housing_aid_explain":"Aiuto alloggio della CAF","peace_of_mind":"Tranquillità:","peace_of_mind_explain":"Perché conta, mi occupo di tutto per rendere le cose semplici per te","peace_of_mind_included":"inclusa","rent":"Affitto:","solidarity_clause":"Clausola di solidarietà:","solidarity_clause_explain":"Non siete solidali con altri locatari per il loro canone","total":"Totale:"},"intro":"Ecco l'elenco di tutte le spese collegate all'appartamento. <br />\n<i>Queste spese saranno le stesse per qualsiasi locazione e sono quindi\nimportanti da considerare nel tuo budget.</i>","room":"🛏️ Camera","room_choose":"Scegli una camera:","title":"💰 Prezzi delle camere per l'appartamento"},"steps":{"title":"🪜 Passi per affittare una camera","intro":"Ecco la lista dei passi tradizionali per affittare una camera in Francia.","step_form":"Modulo per scoprire l'appartamento e candidarsi","step_contact":"Contatto per programmare una visita","step_visit":"Visita dell'appartamento, scelta della camera","step_reflection":"Periodo di riflessione di massimo alcuni giorni","step_choice":"Scelta di una camera e data di inizio locazione","step_choice_multiple":"Se ci sono più camere, classifica delle preferenze","step_lease":"Firma del contratto di locazione (online) e garanzia solidale","step_insurance":"Fornire prova di assicurazione casa","step_payment":"Pagamento del primo affitto e spese","step_deposit":"Pagamento del deposito cauzionale (a volte chiamato \"cauzione\")","step_deposit_note":"Nota: può essere pagato in più rate","step_inventory":"Inventario di entrata e attrezzature","step_keys":"Consegna delle chiavi"}},"slug":{"contact":"contatti","departure":"partenza","documents":"documenti-dossier-locazione","form":"modulo","location":"localizzazione","pictures":"foto","prices":"prezzi","visit":"Visita","videos":"video","steps":"passi-affitto","@email_contact":"mailto:?subject=Appartamento%20Colocation&body=Inserisci%20la%20tua%20email%2C%20per%20inviare%20il%20link%20a%20te%20stesso%2C%20o%20quello%20di%20un%20contatto%20per%20condividere%20il%20sito%3A%0Ahttps%3A%2F%2Fdavidbabel.github.io%2Flocatif%2F"},"rooms":{"cellier":"🍞 Cellier","cuisine":"🍽️ Cucina","engelbreit-chambre-salon":"Camera Soggiorno","engelbreit-chambre-west":"Camera Ovest","engelbreit-chambre-north":"Camera Nord","engelbreit-chambre-south":"Grande Camera Sud","romains-chambre-cellier":"Camera Cellier","romains-chambre-cuisine":"Camera Cucina","romains-chambre-grandeG":"Camera Sinistra","romains-chambre-grandeD":"Camera Destra","romains-chambre-balcon":"Camera Balcone","photos-engelbreit":"📸 Foto Engelbreit","photos-romains":"📸 Foto Romains","plan-2d":"🗺️ Piano 2D","salle-bain":"🛁 Bagno","salle-bain-1":"🛁 Bagno (1/2)","salle-douche":"🚿 Bagno con doccia (2/2)","salon-cuisine":"🛋️ Salotto / 🍽️ Cucina","salon-entree":"🛋️ Salotto + Ingresso","trajet-gare":"🚆 Percorso stazione"}}};
+
+  // Rendre les traductions disponibles globalement
+  window.langTranslations = translations;
+})();</script> <script type="module" src="/_astro/LangSwitcher.astro_astro_type_script_index_0_lang.BYwI6UlU.js"></script>  </div> </div> </div> </nav> <script>
+  (() => {
+    const checkbox = document.getElementById("keepOpenCheckbox");
+    const menu = document.getElementById("menu");
+    const menuToggle = document.getElementById("menu-toggle");
+    if (!checkbox || !menu) return;
+
+    // Fonction pour gérer le blocage du scroll de la page
+    function updateBodyScrollLock() {
+      const isLargeScreen = window.innerWidth >= 1024; // lg breakpoint
+      const isMenuOpen = menuToggle?.checked || false;
+
+      if (!isLargeScreen && isMenuOpen) {
+        // Sur mobile/tablette et menu ouvert : bloquer le scroll
+        document.body.classList.add("menu-open");
+      } else {
+        // Sur desktop ou menu fermé : permettre le scroll
+        document.body.classList.remove("menu-open");
+      }
+    }
+
+    // À la charge, on applique la checkbox d'après localStorage (déjà fait par MenuHamburger)
+    // Pas besoin de le refaire ici
+
+    // Gestion de l'animation du menu mobile
+    function updateMenuAnimation() {
+      const isLargeScreen = window.innerWidth >= 1024; // lg breakpoint
+      const keepOpen = checkbox.checked;
+
+      if (isLargeScreen) {
+        // Desktop : pas d'animation
+        menu.classList.remove(
+          "transition-transform",
+          "duration-300",
+          "ease-in-out",
+        );
+      } else {
+        // Mobile : animation seulement si keepOpen est false
+        if (!keepOpen) {
+          menu.classList.add(
+            "transition-transform",
+            "duration-300",
+            "ease-in-out",
+          );
+        } else {
+          menu.classList.remove(
+            "transition-transform",
+            "duration-300",
+            "ease-in-out",
+          );
+        }
+      }
+
+      // Mettre à jour le blocage de scroll
+      updateBodyScrollLock();
+    }
+
+    // Appliquer au chargement
+    updateMenuAnimation();
+
+    // Écouter les changements de taille d'écran
+    window.addEventListener("resize", updateMenuAnimation);
+
+    // Écouter les changements du toggle de menu pour le blocage de scroll
+    if (menuToggle) {
+      menuToggle.addEventListener("change", updateBodyScrollLock);
+    }
+
+    // Écouter les changements de checkbox (géré maintenant par MenuHamburger)
+    checkbox.addEventListener("change", updateMenuAnimation);
+  })();
+</script>  <main class="flex-1 overflow-y-auto bg-base-100 px-4 py-2 md:px-8 md:py-4" role="main"> <h1> <span class="fr">📞 Contact</span><span class="en">📞 Contact</span><span class="de">📞 Kontakt</span><span class="es">📞 Contacto</span><span class="it">📞 Contatti</span> </h1>  <p data-astro-cid-m5sq7k37>
+📞 <span class="fr">Si c'est la première fois que tu cherches à louer un appartement dans une colocation, c'est normal d'être un peu perdu(e). N'hésites pas à me contacter si tu as des questions sur un appartement, une chambre, sur la ville de Strasbourg ou sur les démarches de location. Les conseils, c'est gratuit !</span><span class="en">If this is the first time you're looking to rent an apartment in a shared flat, it's normal to be a little lost. Don't hesitate to contact me if you have questions about the apartment, the city or the rental process.</span><span class="de">Wenn Sie zum ersten Mal eine Wohnung in einer Wohngemeinschaft mieten möchten, ist es normal, sich etwas verloren zu fühlen. Zögern Sie nicht, mich zu kontaktieren, wenn Sie Fragen zur Wohnung, zur Stadt oder zum Mietprozess haben.</span><span class="es">Si es la primera vez que buscas alquilar un apartamento en una habitación compartida, es normal sentirse un poco perdido. No dudes en contactarme si tienes preguntas sobre el apartamento, la ciudad o el proceso de alquiler.</span><span class="it">Se è la prima volta che cerchi di affittare un appartamento in una condivisione, è normale sentirsi un po' persi. Non esitare a contattarmi se hai domande sull'appartamento, sulla città o sul processo di locazione.</span> </p> <div class="whatsapp-section" data-astro-cid-m5sq7k37> <div class="whatsapp-icon" data-astro-cid-m5sq7k37> <img src="/img/whatsapp.svg" alt="WhatsApp" title="icon src : https://icons8.com/icons/set/whatsapp" data-astro-cid-m5sq7k37> </div> <div class="whatsapp-text" data-astro-cid-m5sq7k37> <p data-astro-cid-m5sq7k37>
+💬 <span class="fr">Vous pouvez me contacter par email ou par téléphone, via SMS ou WhatsApp, pour toute question ou
+pour organiser une visite de l'appartement.</span><span class="en">You can contact me by email or phone for any question or
+to organize a visit of the apartment.</span><span class="de">Sie können mich per E-Mail oder Telefon für alle Fragen kontaktieren oder
+um eine Besichtigung der Wohnung zu organisieren.</span><span class="es">Puedes contactarme por email o teléfono para cualquier pregunta o
+para organizar una visita del apartamento.</span><span class="it">Puoi contattarmi per email o telefono per qualsiasi domanda o
+per organizzare una visita dell'appartamento.</span> </p> </div> </div> <div class="contact-buttons" data-astro-cid-m5sq7k37> <div class="contact-item" data-astro-cid-m5sq7k37> <div class="button-container" data-astro-cid-b3drwhnt> <button id="reveal-email" type="button" class="contact-button" data-encoded="dvYKvExv0Diftm6jxy3jtqMj3zvP3v6DwsnzqE==" data-type="email" data-revealed-title="Cliquer pour ouvrir votre client email" data-copy-success="Email copié !" data-astro-cid-b3drwhnt> <span class="button-icon" data-astro-cid-b3drwhnt>📧</span> <span class="button-text" data-astro-cid-b3drwhnt> <span class="text-line-1" data-astro-cid-b3drwhnt>Survoler pour activer,</span> <span class="text-line-2" data-astro-cid-b3drwhnt>et révéler l&#39;email</span> <span class="text-line-3" data-astro-cid-b3drwhnt>Cliquer pour révéler l&#39;email</span> </span> </button> </div> <script type="module">const k=t=>document.getElementById(t),C=t=>document.createElement(t),v=t=>atob(t),u=t=>t.join(""),p=t=>t.split(""),x=t=>t.toUpperCase(),h=t=>t.toLowerCase(),L=t=>t.reverse(),f=(t,e)=>t.map(e),q=t=>t.toString(16),w=t=>t.charCodeAt(0);function E(t){const e=p(t);for(let n=0;n<e.length-1;n+=2)[e[n],e[n+1]]=[e[n+1],e[n]];return u(e)}function b(t){const e=E(t),n=u(f(p(e),o=>o>="A"&&o<="Z"?h(o):o>="a"&&o<="z"?x(o):o)),c=v(n),d=u(L(p(c))),a=u(f(p(d),o=>o>="A"&&o<="Z"?h(o):o>="a"&&o<="z"?x(o):o));return v(a)}function M(t){return u(f(p(t),e=>`&#x${q(w(e))};`))}function g(t){if(navigator.clipboard)return navigator.clipboard.writeText(t);{const e=C("textarea");return e.value=t,e.style.position="fixed",e.style.left="-999999px",e.style.top="-999999px",document.body.appendChild(e),e.focus(),e.select(),new Promise((n,c)=>{document.execCommand("copy")?n():c(),document.body.removeChild(e)})}}function y(t,e){const n=t.querySelector(".button-text"),c=t.querySelector(".revealed-content");if(!n||!c)return;const d=c.innerHTML;c.innerHTML=`<span class="copy-feedback" style="margin: auto;">${e}</span>`,setTimeout(()=>{c.innerHTML=d;const a=t.querySelector(".copy-action");a&&a.addEventListener("click",o=>{o.stopPropagation();const l=t.getAttribute("data-encoded")||"",s=t.getAttribute("data-copy-success")||"Copié !",i=b(l);g(i).then(()=>{y(t,s)}).catch(()=>{y(t,"Erreur de copie")})})},2e3)}function $(t){const e=k(t);if(!e)return;const n=e.getAttribute("data-encoded")||"",c=e.getAttribute("data-type")||"";e.getAttribute("data-revealed-title");const d=e.getAttribute("data-copy-success")||"Copié !";let a=!1,o=!1;e.addEventListener("mouseenter",function(){if(!a&&!o){e.style.cursor="pointer",e.style.opacity="1",e.style.background="var(--color-primary-shadow-light, rgba(25, 151, 37, 0.1))",e.style.borderColor="var(--color-primary-hover, #53b15c)",e.style.color="var(--color-primary-hover, #53b15c)",e.style.transform="translateY(-2px)",e.style.boxShadow="0 6px 12px var(--color-primary-shadow, rgba(25, 151, 37, 0.3))";const l=e.querySelector(".text-line-1"),s=e.querySelector(".text-line-2"),i=e.querySelector(".text-line-3");l&&(l.style.display="none"),s&&(s.style.display="none"),i&&(i.style.display="block"),a=!0}}),e.addEventListener("click",function(l){if(a&&!o){l.preventDefault();const s=b(n),i=M(s),r=e.querySelector(".button-icon"),S=r?r.innerHTML:"",A=window.innerWidth<=768?"2rem":"3rem";e.innerHTML=`
+          <span class="button-icon" style="font-size: ${A} !important;">${S}</span>
+          <span class="button-text" style="margin: auto;">
+            <span class="revealed-content">
+              <span class="revealed-value">${i}</span>
+              <div class="button-actions">
+                <button class="action-btn copy-action" title="Copier" style="cursor: copy">
+                  <span class="action-icon">📋</span>
+                  <span class="action-text">Copier</span>
+                </button>
+              </div>
+            </span>
+          </span>
+        `,e.className="contact-button revealed-button",o=!0;const m=e.querySelector(".copy-action");m&&m.addEventListener("click",T=>{T.stopPropagation(),g(s).then(()=>{y(e,d)}).catch(()=>{y(e,"Erreur de copie")})})}else if(o){const s=b(n),i=c==="email"?`mailto:${s}`:`tel:${s}`,r=C("a");r.href=i,r.target="_blank",r.style.display="none",document.body.appendChild(r),r.click(),document.body.removeChild(r)}})}document.addEventListener("DOMContentLoaded",function(){document.querySelectorAll(".contact-button[data-encoded]").forEach(e=>{e.id&&$(e.id)})});</script>  </div> <div class="contact-item" data-astro-cid-m5sq7k37> <div class="button-container" data-astro-cid-b3drwhnt> <button id="reveal-phone" type="button" class="contact-button" data-encoded="umKD1BlHgDy91rUPMwA1WA==" data-type="phone" data-revealed-title="Cliquer pour appeler ce numéro" data-copy-success="Téléphone copié !" data-astro-cid-b3drwhnt> <span class="button-icon" data-astro-cid-b3drwhnt>📱</span> <span class="button-text" data-astro-cid-b3drwhnt> <span class="text-line-1" data-astro-cid-b3drwhnt>Survoler pour activer,</span> <span class="text-line-2" data-astro-cid-b3drwhnt>et révéler le téléphone</span> <span class="text-line-3" data-astro-cid-b3drwhnt>Cliquer pour révéler le téléphone</span> </span> </button> </div>   </div> </div>  <footer class="h-50"></footer> </main> </div> <script type="module">let i=0,o=null;const u=8,s=5e3;document.addEventListener("DOMContentLoaded",()=>{location.hostname.includes("localhost")&&document.body.classList.add("localhost"),localStorage.getItem("adminMode")==="true"&&(document.body.classList.add("admin"),typeof window.admin<"u"&&(window.admin=!0));function d(){const t=!(localStorage.getItem("adminMode")==="true");localStorage.setItem("adminMode",String(t)),document.body.classList.toggle("admin",t),typeof window.admin<"u"&&(window.admin=t);const e=new CustomEvent("adminModeChanged",{detail:{enabled:t}});document.dispatchEvent(e)}document.addEventListener("keydown",n=>{n.ctrlKey&&n.key.toLowerCase()==="P".toLowerCase()&&(n.preventDefault(),d())});function c(){const n=document.getElementById("menu");if(!n)return;function t(){return window.innerWidth<=768||"ontouchstart"in window}function e(){i=0,o&&(window.clearTimeout(o),o=null)}function l(a){t()&&(i++,i===1&&(o=window.setTimeout(()=>{e()},s)),i>=u&&(e(),a.preventDefault(),a.stopPropagation(),d(),navigator.vibrate&&navigator.vibrate([100,50,100])))}n.addEventListener("click",l,!0)}c()});</script>  <div id="breakpoint-helper"> <span class="block sm:hidden">🖥️ xs</span> <span class="hidden sm:block md:hidden">🖥️ sm</span> <span class="hidden md:block lg:hidden">🖥️ md</span> <span class="hidden lg:block xl:hidden">🖥️ lg</span> <span class="hidden xl:block">🖥️ xl</span> </div>  </body></html> 

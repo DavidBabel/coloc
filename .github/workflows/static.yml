@@ -1,4 +1,3 @@
-# Workflow optimisé pour runner local Windows avec repli sur GitHub-hosted
 name: Deploy static content to Pages
 
 on:
@@ -17,52 +16,63 @@ concurrency:
 
 jobs:
 
-  # JOB 1 : tentative locale via self-hosted (Windows)
-  deploy-local:
+  build-local:
     runs-on: self-hosted
-    timeout-minutes: 5
+    timeout-minutes: 10
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Prepare Files (Windows)
+      # Si tu as du build, tu peux rajouter ici
+      # - run: npm run build
+
+      - name: Prepare dist folder
         shell: powershell
         run: |
-          $publishDir = ".\_site_dist"
-          if (Test-Path $publishDir) { Remove-Item -Recurse -Force $publishDir }
-          New-Item -ItemType Directory -Force -Path $publishDir
-          Get-ChildItem -Exclude ".git", ".github", "_site_dist", "_actions", "_work" | Copy-Item -Destination $publishDir -Recurse -Force
-          Write-Host "Dossier de déploiement préparé dans $publishDir"
+          $dist = "_dist"
+          if (Test-Path $dist) { Remove-Item -Recurse -Force $dist }
+          New-Item -ItemType Directory -Force -Path $dist
+          Get-ChildItem -Exclude ".git", ".github", "_dist", "_actions", "_work" | Copy-Item -Destination $dist -Recurse -Force
+
+      - name: Zip artifact
+        shell: powershell
+        run: |
+          if (Test-Path "site.zip") { Remove-Item -Force "site.zip" }
+          Compress-Archive -Path "_dist\*" -DestinationPath "site.zip"
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
-          path: './_site_dist'
+          name: pages-zip
+          path: site.zip
 
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
 
-  # JOB 2 : fallback auto si runner local HS / offline / timeout
   deploy-cloud:
-    needs: deploy-local
-    if: always() && (needs.deploy-local.result == 'failure' || needs.deploy-local.result == 'cancelled')
+    needs: build-local
     runs-on: ubuntu-latest
     environment:
       name: github-pages
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: pages-zip
+
+      - name: Unzip artifact
+        run: |
+          mkdir site
+          unzip site.zip -d site
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      - name: Upload artifact (cloud)
+      - name: Upload to Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: './site'
 
-      - name: Deploy to GitHub Pages
-        id: deployment
+      - name: Deploy to Pages
+        id: deploy
         uses: actions/deploy-pages@v4

@@ -22,33 +22,25 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Try to deploy on self-hosted runner first
   deploy-local:
-    timeout-minutes: 2  # Si le runner n'est pas disponible, échoue après 2 min
     runs-on: self-hosted
-    defaults:
-      run:
-        shell: bash
-    continue-on-error: true  # Permet au workflow de continuer même si ce job échoue
-    outputs:
-      success: ${{ steps.deploy.outcome == 'success' }}
+    # On retire continue-on-error pour que le job échoue réellement s'il y a un souci
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: '.'
-      - name: Deploy to GitHub Pages
-        id: deploy
-        uses: actions/deploy-pages@v4
 
-  # Fallback: deploy on GitHub-hosted runner if local failed or timed out
+      - name: Deploy Local (Custom Step)
+        shell: bash
+        run: |
+          echo "Tentative de build local..."
+          # Si tu as une commande de build, mets là ici.
+          # Note : Les actions 'upload-pages-artifact' plantent souvent sur Windows local.
+          # Si ce job échoue, il passera la main au cloud.
+          exit 1 # On force l'échec ici pour tester le fallback ou si l'action plante
+
   deploy-cloud:
     needs: deploy-local
-    if: needs.deploy-local.result != 'success'
+    if: always() && needs.deploy-local.result == 'failure'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

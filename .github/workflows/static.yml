@@ -16,7 +16,8 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # JOB 1 : Tentative sur ton runner local (Windows)
+
+  # JOB 1 : tentative locale via self-hosted (Windows)
   deploy-local:
     runs-on: self-hosted
     timeout-minutes: 5
@@ -24,48 +25,44 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Étape cruciale : On prépare un dossier propre via PowerShell
-      # pour éviter les erreurs de chemins Bash sous Windows
-      - name: Prepare Files (Windows Friendly)
-        shell: pwsh
+      - name: Prepare Files (Windows)
+        shell: powershell
         run: |
           $publishDir = ".\_site_dist"
           if (Test-Path $publishDir) { Remove-Item -Recurse -Force $publishDir }
           New-Item -ItemType Directory -Force -Path $publishDir
-
-          # Liste ici les fichiers/dossiers à déployer.
-          # Par défaut, on copie tout sauf les dossiers système du runner
           Get-ChildItem -Exclude ".git", ".github", "_site_dist", "_actions", "_work" | Copy-Item -Destination $publishDir -Recurse -Force
           Write-Host "Dossier de déploiement préparé dans $publishDir"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # On utilise le dossier temporaire qu'on vient de créer
           path: './_site_dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
 
-  # JOB 2 : Fallback automatique si le local échoue ou est hors-ligne
+  # JOB 2 : fallback auto si runner local HS / offline / timeout
   deploy-cloud:
     needs: deploy-local
-    # S'exécute si le job local a échoué (failure) ou a été annulé (cancelled/timeout)
     if: always() && (needs.deploy-local.result == 'failure' || needs.deploy-local.result == 'cancelled')
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
-      - name: Upload artifact
+
+      - name: Upload artifact (cloud)
         uses: actions/upload-pages-artifact@v3
         with:
           path: '.'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

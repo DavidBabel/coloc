@@ -22,12 +22,13 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: [self-hosted, ubuntu-latest]
+  # Try to deploy on self-hosted runner first
+  deploy-local:
+    timeout-minutes: 5  # Si le runner n'est pas disponible, échoue après 5 min
+    runs-on: self-hosted
+    continue-on-error: true  # Permet au workflow de continuer même si ce job échoue
+    outputs:
+      success: ${{ steps.deploy.outcome == 'success' }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -36,7 +37,27 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
+          path: '.'
+      - name: Deploy to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v4
+
+  # Fallback: deploy on GitHub-hosted runner if local failed or timed out
+  deploy-cloud:
+    needs: deploy-local
+    if: needs.deploy-local.result != 'success'  # S'exécute si le job local a échoué ou timeout
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
           path: '.'
       - name: Deploy to GitHub Pages
         id: deployment

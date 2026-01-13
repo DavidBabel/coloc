@@ -1,3 +1,4 @@
+# Workflow optimisé pour runner local Windows avec repli sur GitHub-hosted
 name: Deploy static content to Pages
 
 on:
@@ -15,6 +16,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # JOB 1 : Tentative sur ton runner local (Windows)
   deploy-local:
     runs-on: self-hosted
     timeout-minutes: 5
@@ -22,32 +24,38 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Correction du chemin : On utilise PowerShell pour préparer l'environnement
-      # car les actions JS de GitHub s'emmêlent les pinceaux avec les slashs Windows.
-      - name: Fix Path and Setup Pages
-        id: setup
+      # Étape cruciale : On prépare un dossier propre via PowerShell
+      # pour éviter les erreurs de chemins Bash sous Windows
+      - name: Prepare Files (Windows Friendly)
         shell: pwsh
         run: |
-          Write-Host "Nettoyage des anciens artefacts..."
-          if (Test-Path "_site") { Remove-Item -Recurse -Force _site }
-          New-Item -ItemType Directory -Force -Path _site
-          # Copie tes fichiers dans un dossier propre pour l'artefact
-          Copy-Item -Path ".\*" -Destination "_site" -Recurse -Exclude ".git",".github","_site"
+          $publishDir = ".\_site_dist"
+          if (Test-Path $publishDir) { Remove-Item -Recurse -Force $publishDir }
+          New-Item -ItemType Directory -Force -Path $publishDir
+
+          # Liste ici les fichiers/dossiers à déployer.
+          # Par défaut, on copie tout sauf les dossiers système du runner
+          Get-ChildItem -Exclude ".git", ".github", "_site_dist", "_actions", "_work" | Copy-Item -Destination $publishDir -Recurse -Force
+          Write-Host "Dossier de déploiement préparé dans $publishDir"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # On pointe vers le dossier qu'on vient de créer proprement
-          path: '_site'
+          # On utilise le dossier temporaire qu'on vient de créer
+          path: './_site_dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
 
-  # Fallback si le local échoue ou est éteint
+  # JOB 2 : Fallback automatique si le local échoue ou est hors-ligne
   deploy-cloud:
     needs: deploy-local
-    if: always() && needs.deploy-local.result == 'failure'
+    # S'exécute si le job local a échoué (failure) ou a été annulé (cancelled/timeout)
+    if: always() && (needs.deploy-local.result == 'failure' || needs.deploy-local.result == 'cancelled')
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout

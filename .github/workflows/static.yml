@@ -24,8 +24,11 @@ concurrency:
 jobs:
   # Try to deploy on self-hosted runner first
   deploy-local:
-    timeout-minutes: 5  # Si le runner n'est pas disponible, échoue après 5 min
+    timeout-minutes: 2  # Si le runner n'est pas disponible, échoue après 2 min
     runs-on: self-hosted
+    defaults:
+      run:
+        shell: bash
     continue-on-error: true  # Permet au workflow de continuer même si ce job échoue
     outputs:
       success: ${{ steps.deploy.outcome == 'success' }}
@@ -45,7 +48,7 @@ jobs:
   # Fallback: deploy on GitHub-hosted runner if local failed or timed out
   deploy-cloud:
     needs: deploy-local
-    if: needs.deploy-local.result != 'success'  # S'exécute si le job local a échoué ou timeout
+    if: needs.deploy-local.result != 'success'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
